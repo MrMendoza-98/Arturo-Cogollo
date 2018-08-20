@@ -1,0 +1,14 @@
+body {
+    padding-top: 54px;
+}
+
+/* .img {
+    -webkit-box-shadow: 2px 2px 5px #999;
+    -moz-box-shadow: 2px 2px 5px #999;
+  } */
+  
+@media (min-width: 992px) {
+    body {
+      padding-top: 56px;
+    }
+}
