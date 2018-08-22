@@ -74,7 +74,7 @@ a {
     font-family: "montserrat-light", sans-serif;
     font-size: 1.3rem;
     line-height: 1.846;
-    padding: 45px;
+    padding: 0px 0px 0px 30px;
     height: 100%;
     width: 280px;
     position: fixed;
@@ -91,6 +91,8 @@ a {
     -ms-transform: translateX(100%);
     transform: translateX(100%);
     visibility: hidden;
+    /*list-style: none;*/
+    list-style-type: square;
 }
 
 .header-nav a, .header-nav a:visited {
@@ -135,7 +137,18 @@ a {
 
 .header-nav__list li {
     padding-left: 0;
-    line-height: 35px;;
+    line-height: 35px;
+}
+
+.header-nav-list-category {
+    list-style-type: none;
+}
+
+.smoothscroll:hover {
+    /*transition:all .2s ease;*/
+    /*border-bottom: 2px solid white;
+    transform: scale(1.5);*/
+    
 }
 
 .header-nav__list a,
