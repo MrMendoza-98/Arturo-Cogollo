@@ -38,51 +38,6 @@
               <!-- Titulo-->
                 <h2 class="text-center text-white my-3 h1">Categories</h2>
       
-                <!--Menu en nav para escoger
-                <div class="row justify-content-center">
-                    <!-- <ul class="list-inline"> 
-                        <div class="col-md-3 col-6 col-lg-auto">
-                            <li class="list-inline-item">
-                                <button style="font-size:16px;" class="btn btn-link text-light" data-toggle="collapse" data-target="#all" aria-expanded="true" aria-controls="collapseOne">All</button>
-                            </li>
-                        </div>
-                        <div class="col-md-3 col-6 col-lg-auto"> 
-                            <li class="list-inline-item">
-                                <button style="font-size:16px;" class="btn btn-link text-light h2" data-toggle="collapse" data-target="#places" aria-expanded="false" aria-controls="collapseOne">Places to Live</button>
-                            </li>
-                        </div>
-                        <div class="col-md-3 col-6 col-lg-auto"> 
-                            <li class="list-inline-item">
-                                <button style="font-size:16px;" class="btn btn-link text-light h2" data-toggle="collapse" data-target="#cultural" aria-expanded="false" aria-controls="collapseOne">Cultural</button>
-                            </li>
-                        </div>
-                        <div class="col-md-3 col-6 col-lg-auto"> 
-                            <li class="list-inline-item">
-                                <button style="font-size:16px;" class="btn btn-link text-light h2" data-toggle="collapse" data-target="#commercial" aria-expanded="false" aria-controls="collapseOne">Commercial</button>
-                            </li>
-                        </div>
-                        <div class="col-md-3 col-6 col-lg-auto"> 
-                            <li class="list-inline-item">
-                                <button style="font-size:16px;" class="btn btn-link text-light h2" data-toggle="collapse" data-target="#plastic" aria-expanded="false" aria-controls="collapseOne">Plastic Surgery Clinic</button>
-                            </li>
-                        </div>
-                        <div class="col-md-3 col-6 col-lg-auto"> 
-                            <li class="list-inline-item">
-                                <button style="font-size:16px;" class="btn btn-link text-light h2" data-toggle="collapse" data-target="#landscaping" aria-expanded="false" aria-controls="collapseOne">Landscaping</button>
-                            </li>
-                        </div>
-                        <div class="col-md-3 col-6 col-lg-auto"> 
-                            <li class="list-inline-item">
-                                <button style="font-size:16px;" class="btn btn-link text-light h2" data-toggle="collapse" data-target="#public" aria-expanded="false" aria-controls="collapseOne">Public Buildings</button>
-                            </li>
-                        </div>
-                        <div class="col-md-3 col-6 col-lg-auto"> 
-                            <li class="list-inline-item">
-                                <button class="btn btn-link text-light h2" data-toggle="collapse" data-target="#unbuilt" aria-expanded="false" aria-controls="collapseOne">Unbuilt</button>
-                            </li>
-                        </div>
-                    <!-- </ul> 
-                </div>-->
 
         <div class="container">
             <div class="row text-center text-lg-left">
@@ -171,65 +126,7 @@
                     </a>
                 </div>
                 
-        </div>
-              <!--All-->
-              <!-- <div class="" >
-                  <div id="all" class="collapse show" aria-labelledby="headingOne" data-parent="#menu">
-                      
-                  </div>
-              </div> -->
-
-              <!--place to lives-->
-              <!-- <div class="">
-                    <div id="places" class="collapse" aria-labelledby="headingOne" data-parent="#menu">
-                        
-                    </div>
-              </div> -->
-
-              <!-- cultural -->
-              <!-- <div class="">
-                    <div id="cultural" class="collapse" aria-labelledby="headingOne" data-parent="#menu">
-                        
-                    </div>
-              </div>
-
-              <!-- commercial
-              <div class="">
-                    <div id="commercial" class="collapse" aria-labelledby="headingOne" data-parent="#menu">
-                        
-                    </div>
-              </div>
-            
-              <!-- plastic
-              <div class="">
-                    <div id="plastic" class="collapse" aria-labelledby="headingOne" data-parent="#menu">
-                        
-                    </div>
-              </div>
-            
-                <!-- landscaping
-              <div class="">
-                    <div id="landscaping" class="collapse" aria-labelledby="headingOne" data-parent="#menu">
-                        
-                    </div>
-              </div>
-
-              <!-- public 
-              <div class="">
-                    <div id="public" class="collapse" aria-labelledby="headingOne" data-parent="#menu">
-                       
-                    </div>
-              </div>
-
-              <!--Unbuilt
-              <div class="">
-                    <div id="unbuilt" class="collapse" aria-labelledby="headingOne" data-parent="#menu">
-                        
-                    </div>
-              </div>
-
-            </div>
-        </div> -->
+        </div>     
     </section>
 
 
