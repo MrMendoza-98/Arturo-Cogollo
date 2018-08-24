@@ -8,29 +8,32 @@
   height: 100vh;
   min-height: 300px;
   background: no-repeat center center scroll;
+  object-fit: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  transition: all 2500ms ease;
+  /*transition: opacity ease-in-out 3s;*/
 }
-.carousel.zoom.landscape .carousel-control-prev,
-.carousel.zoom.landscape .carousel-control-next{
-  background: transparent;
-  opacity: 0;
+.carousel.zoom.landscape .carousel-control-prev .circle-prev,
+.carousel.zoom.landscape .carousel-control-next .circle-next{
+  /*background: transparent;*/
+  /*opacity: 0;*/
   transition: all .4s ease-in-out;
   -webkit-border-radius: 100px;
   border-radius: 100px;
 }
-.carousel.zoom.landscape .carousel-control-prev{
+.carousel.zoom.landscape .carousel-control-prev .circle-prev{
   left: 1%;
 }
-.carousel.zoom.landscape .carousel-control-next{
+.carousel.zoom.landscape .carousel-control-next .circle-next{
   right: 1%;
 }
-.carousel.zoom.landscape .carousel-control-prev,
-.carousel.zoom.landscape .carousel-control-next{
-  opacity: 0;
-  top: 45%;
+.carousel.zoom.landscape .carousel-control-prev .circle-prev,
+.carousel.zoom.landscape .carousel-control-next .circle-next{
+  /*opacity: 0;*/
+  /*top: 45%;*/
   width: 45px;
   height: 45px;
   z-index: 100;
@@ -45,21 +48,39 @@
   -webkit-border-radius: 100px;
   border-radius: 100px;
 }
-
-.carousel.zoom.landscape:hover .carousel-control-prev,
-.carousel.zoom.landscape:hover .carousel-control-next{
-    opacity: 1;
+.carousel.zoom.landscape .carousel-control-prev,
+.carousel.zoom.landscape .carousel-control-next{
+  /*opacity: 0;*/
+  /*top: 45%;
+  width: 45px;
+  height: 45px;
+  z-index: 100;
+  color: #ffffff;
+  font-size: 24px;
+  cursor: pointer;
+  overflow: hidden;
+  line-height: 43px;
+  text-shadow: none;
+  font-weight: normal;
+  background: transparent;
+  -webkit-border-radius: 100px;
+  border-radius: 100px;*/
 }
 
-.carousel.zoom.landscape .carousel-control-prev:hover,
-.carousel.zoom.landscape .carousel-control-next:hover{
+.carousel.zoom.landscape:hover .carousel-control-prev ,
+.carousel.zoom.landscape:hover .carousel-control-next {
+    /*opacity: 1;*/
+}
+
+.carousel.zoom.landscape .carousel-control-prev:hover .circle-prev,
+.carousel.zoom.landscape .carousel-control-next:hover .circle-next{
     color: #fdfdfd;
     background: rgba(0, 0, 0, 0.5);
     border: 0px transparent;
 }
 .carousel.zoom.landscape .carousel-control-prev>span:nth-child(1){
-    left: 45%;
+    left: 40%;
 }
 .carousel.zoom.landscape .carousel-control-next>span:nth-child(1){
-    right: 45%;
+    right: 40%;
 }

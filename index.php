@@ -41,93 +41,43 @@
         <div class="carousel-inner" role="listbox">
           <!-- Slide One - Set the background image for this slide in the line below -->
           <a href="detail.php" class="carousel-item active" style="background-image: url('http://www.arturocogollo.com/images/<?php echo '1.jpg'; ?>')">
-            <!-- <a href="detail.php" > -->
-              <!-- <img src="img/img1.jpg" class="responsive"> -->
-              <div class="carousel-caption d-none d-md-block">
-                <!-- <h3>First Slide</h3>
-                <p>This is a description for the first slide.</p> -->
-              </div>
-            <!-- </a> -->
           </a>
           <!-- Slide Two - Set the background image for this slide in the line below -->
           <a href="detail.php" class="carousel-item" style="background-image: url('http://www.arturocogollo.com/images/<?php echo '2.jpg'; ?>')">
-            <!-- <a href="detail.php" > -->
-              <!-- <img src="img/img2.jpg" class="responsive"> -->
-              <div class="carousel-caption d-none d-md-block">
-                <!-- <h3>Second Slide</h3>
-                <p>This is a description for the second slide.</p> -->
-              </div>
-            <!-- </a> -->
           </a>
           <!-- Slide Three - Set the background image for this slide in the line below -->
           <a href="detail.php" class="carousel-item" style="background-image: url('http://www.arturocogollo.com/images/<?php echo '3.jpg'; ?>')">
-            <!-- <a href="detail.php" > -->
-              <!-- <img src="img/img3.jpg" class="responsive"> -->
-              <div class="carousel-caption d-none d-md-block">
-                <!-- <h3>Third Slide</h3>
-                <p>This is a description for the third slide.</p> -->
-              </div>
-            <!-- </a> -->
           </a>
           <!-- Slide Three - Set the background image for this slide in the line below -->
           <a href="detail.php" class="carousel-item" style="background-image: url('http://www.arturocogollo.com/images/<?php echo '4.jpg'; ?>')">
-            <!-- <a href="detail.php" > -->
-              <!-- <img src="img/img3.jpg" class="responsive"> -->
-              <div class="carousel-caption d-none d-md-block">
-                <!-- <h3>Third Slide</h3>
-                <p>This is a description for the third slide.</p> -->
-              </div>
-            <!-- </a> -->
           </a>
           <!-- Slide Three - Set the background image for this slide in the line below -->
           <a href="detail.php" class="carousel-item" style="background-image: url('http://www.arturocogollo.com/images/<?php echo '5.jpg'; ?>')">
-            <!-- <a href="detail.php" > -->
-              <!-- <img src="img/img3.jpg" class="responsive"> -->
-              <div class="carousel-caption d-none d-md-block">
-                <!-- <h3>Third Slide</h3>
-                <p>This is a description for the third slide.</p> -->
-              </div>
-            <!-- </a> -->
           </a>
           
           <!-- Slide Three - Set the background image for this slide in the line below -->
           <a href="detail.php" class="carousel-item" style="background-image: url('http://www.arturocogollo.com/images/<?php echo '7.jpg'; ?>')">
-            <!-- <a href="detail.php" > -->
-              <!-- <img src="img/img3.jpg" class="responsive"> -->
-              <div class="carousel-caption d-none d-md-block">
-                <!-- <h3>Third Slide</h3>
-                <p>This is a description for the third slide.</p> -->
-              </div>
-            <!-- </a> -->
           </a>
           <!-- Slide Three - Set the background image for this slide in the line below -->
           <a href="detail.php" class="carousel-item" style="background-image: url('http://www.arturocogollo.com/images/<?php echo '8.jpg'; ?>')">
-            <!-- <a href="detail.php" > -->
-              <!-- <img src="img/img3.jpg" class="responsive"> -->
-              <div class="carousel-caption d-none d-md-block">
-                <!-- <h3>Third Slide</h3>
-                <p>This is a description for the third slide.</p> -->
-              </div>
-            <!-- </a> -->
           </a>
           <!-- Slide Three - Set the background image for this slide in the line below -->
           <a href="detail.php" class="carousel-item" style="background-image: url('http://www.arturocogollo.com/images/<?php echo '9.jpg'; ?>')">
-            <!-- <a href="detail.php" > -->
-              <!-- <img src="img/img3.jpg" class="responsive"> -->
-              <div class="carousel-caption d-none d-md-block">
-                <!-- <h3>Third Slide</h3>
-                <p>This is a description for the third slide.</p> -->
-              </div>
-            <!-- </a> -->
           </a>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-          <span class="fa fa-angle-left" ></span>
+          <div class="circle-prev">
+          <n class="fa fa-angle-left"></span>
           <span class="sr-only">Previous</span>
+            
+          </div>
         </a>
         <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-          <span class="fa fa-angle-right"></span>
+          <div class="circle-next">
+          <spaspan class="fa fa-angle-right" ></span>
           <span class="sr-only">Next</span>
+            
+          </div>
         </a>
       </div>
     </section>
@@ -136,13 +86,11 @@
     <?php
         include 'library-js.php';
     ?>
-    <script type="text/javascript">
-    $('.carousel').hover(function () {
-      $(this).carousel('cycle')
-    });
+    <script>
+    
     $('.carousel').carousel({
-
-    interval: 4000,
+      pause: "false",
+      interval: 4000,
     })
     </script>
   </body>
