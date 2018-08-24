@@ -14,13 +14,20 @@
   -o-background-size: cover;
   background-size: cover;
   transition: all 2500ms ease;
-  /*transition: opacity ease-in-out 3s;*/
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5),0 6px 20px 0 rgba(0, 0, 0, 0.9);
+  /*transition: opacity ease-in-out 5s;*/
+  /*transition: all ease-in-out 1.5s ;*/
+}
+.carousel-item-left {
+  opacity: 1;
+  /*transition: opacity ease-in-out 5s;*/
+  /*transition: all ease-in-out 1.5s ease 2500ms;*/
 }
 .carousel.zoom.landscape .carousel-control-prev .circle-prev,
 .carousel.zoom.landscape .carousel-control-next .circle-next{
   /*background: transparent;*/
   /*opacity: 0;*/
-  transition: all .4s ease-in-out;
   -webkit-border-radius: 100px;
   border-radius: 100px;
 }
@@ -84,3 +91,4 @@
 .carousel.zoom.landscape .carousel-control-next>span:nth-child(1){
     right: 40%;
 }
+/**/
