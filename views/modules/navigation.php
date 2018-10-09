@@ -14,7 +14,7 @@
     <header class="s-header">
 
         <div class="header-logo">
-            <a class="site-logo" href="index.php">
+            <a class="site-logo" href="inicio">
               <h3 class="tittle">arturo cogollo</h3>
               <p class="subtittle">arquitectura</p>
             </a>
@@ -27,20 +27,20 @@
                 <!-- <h3>Menu</h3> -->
 
                 <ul class="header-nav__list">
-                    <li class="current"><a class="smoothscroll title"  href="index.php" title="home">Home</a></li>
-                    <li><a class="smoothscroll title"  href="categories.php" title="about">Categories</a></li>
+                    <li class="current"><a class="smoothscroll title"  href="inicio" title="home">Home</a></li>
+                    <li><a class="smoothscroll title"  href="categories" title="about">Categories</a></li>
                     <ul>
-                        <li><a class="subtitle" href="category-all.php">All</a></li>
-                        <li><a class="subtitle" href="category-houses.php">Houses / New Buildings</a></li>
-                        <li><a class="subtitle" href="category-apartments.php">Apartments / Refurb</a></li>
-                        <li><a class="subtitle" href="category-cultural.php">Cultural</a></li>
-                        <li><a class="subtitle" href="category-commercial.php">Commercial</a></li>
-                        <li><a class="subtitle" href="category-plastic.php">Plastic Surgery Clinic</a></li>
-                        <li><a class="subtitle" href="category-landscaping.php">Landscaping</a></li>
-                        <li><a class="subtitle" href="category-public.php">Public Buildings</a></li>
-                        <li><a class="subtitle" href="category-unbuilt.php">Unbuilt</a></li>
+                        <li><a class="subtitle" href="all">All</a></li>
+                        <li><a class="subtitle" href="houses">Houses / New Buildings</a></li>
+                        <li><a class="subtitle" href="apartments">Apartments / Refurb</a></li>
+                        <li><a class="subtitle" href="cultural">Cultural</a></li>
+                        <li><a class="subtitle" href="commercial">Commercial</a></li>
+                        <li><a class="subtitle" href="plastic">Plastic Surgery Clinic</a></li>
+                        <li><a class="subtitle" href="landscaping">Landscaping</a></li>
+                        <li><a class="subtitle" href="public">Public Buildings</a></li>
+                        <li><a class="subtitle" href="unbuilt">Unbuilt</a></li>
                     </ul>
-                    <li><a class="smoothscroll title"  href="contact.php" title="contact">Contact</a></li>
+                    <li><a class="smoothscroll title"  href="contact" title="contact">Contact</a></li>
                 </ul>
 
                 <!-- <ul class="header-nav__social">

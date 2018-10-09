@@ -1,35 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Category Plastic Surgery Clinic | Arturo Cogollo</title>
-
-  <!-- Link para el favicon -->
-  <link rel="shortcut icon" href="img/favicon-arturo1.png" type="image/x-icon">
-
-  <!-- Bootstrap core CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="css/main.css">
-
-  <!-- Custom styles for this template -->
-  <link href="css/thumbnail-gallery.css" rel="stylesheet">
-</head>
-<body>
-    <!-- Navigation -->
-    <?php 
-        include 'navigation.php';
-    ?>
-
+    <div style="margin-top: 05%;"></div>
+  
     <!-- Page Content -->
     <section class="mb-3">
         <div class="container">
             <div class="content">
               <!-- Titulo-->
-                <h2 class="text-center text-white my-3 h1">Plastic Surgery Clinic Category</h2>
+                <h2 class="text-center text-white my-3 h2">Plastic Surgery Clinic Category</h2>
             </div>
         </div>
         <div class="container">
@@ -144,10 +120,3 @@
       <p class="m-0 text-center text-white">Website under construction</p>
     </div>
   </footer>
-
-  <!-- Bootstrap core JavaScript -->
-  <?php
-      include 'library-js.php';
-  ?>
-</body>
-</html>

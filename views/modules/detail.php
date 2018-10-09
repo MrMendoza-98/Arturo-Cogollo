@@ -1,45 +1,9 @@
-<!DOCTYPE html>
-<html lang="es">
-
-  <head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Detail | Arturo Cogollo</title>
-
-    <!-- Link para el favicon -->
-    <link rel="shortcut icon" href="img/favicon-arturo1.png" type="image/x-icon">
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="js/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <!-- Add this css File in head tag-->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" media="all">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet" media="all">
-
-    <!-- CSS-->
-    <link rel="stylesheet" href="css/Gallery_Style.css">
-    <link rel="stylesheet" href="css/main.css">
-
-    <!-- Fancy box -->
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.4/jquery.fancybox.css">
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.4/jquery.fancybox.js"></script>
-  </head>
-
-  <body>
-    <!-- Navigation -->
-    <?php
-        include 'navigation.php';
-    ?>
-
-    <div class="container-fluid" style="margin-top:60px;">
+      <div class="container-fluid" style="margin-top:05%;">
       <!-- <div class="col-md-8 col-md-offset-2"  > -->
-      <style media="screen">
-
+      <style media="screen" type="text/css">
+          body{
+            <?php include 'views/css/Gallery_Style.css'; ?>
+          }
       </style>
         <div class="restar">
           <a href="javascript:history.back()">
@@ -252,11 +216,11 @@
 
 });
 </script>
-    <!-- Bootstrap core JavaScript -->
+<!--    Bootstrap core JavaScript 
     <?php
-        include 'library-js.php';
+        //include 'library-js.php';
     ?>
   </body>
 
-</html>
+</html> -->
 			
