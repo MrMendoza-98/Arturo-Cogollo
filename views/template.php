@@ -24,7 +24,12 @@
     <link href="views/css/full-slider.css" rel="stylesheet">
 
     <!-- CSS-->
-    <!-- <link rel="stylesheet" href="views/css/Gallery_Style.css"> -->
+    <?php 
+        if($_GET["action"] == "detail"){
+          echo '<link rel="stylesheet" href="views/css/Gallery_Style.css">';
+          echo '<script src="views/js/detail.js"></script>';
+        }
+    ?>
     <link rel="stylesheet" href="views/css/main.css">
 
     <!-- Fancy box -->
