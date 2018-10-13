@@ -3,12 +3,12 @@
 	class EnlacesModels{
 		public function enlacesModel($enlaces){
 			if(	$enlaces == "inicio" ||
-				$enlaces == "categories" ||
+				$enlaces == "categoria" ||
 				$enlaces == "ingreso" ||
-				$enlaces == "contact" ||
-				$enlaces == "all" ||
-				$enlaces == "apartments" ||
-				$enlaces == "commercial" ||
+				$enlaces == "usuario" ||
+				$enlaces == "slide" ||
+				$enlaces == "proyectos" ||
+				$enlaces == "nuevoProyecto" ||
 				$enlaces == "cultural" ||
 				$enlaces == "detail" ||
 				$enlaces == "houses" ||

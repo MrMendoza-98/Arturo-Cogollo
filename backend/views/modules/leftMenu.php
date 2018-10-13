@@ -2,34 +2,38 @@
         <nav class="sidebar-nav">
           <ul class="nav">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">
-                <i class="nav-icon icon-speedometer"></i> Dashboard
+              <a class="nav-link" href="inicio">
+                <i class="nav-icon icon-speedometer"></i> Panel Principal
                 <span class="badge badge-primary">NEW</span>
               </a>
             </li>
-            <li class="nav-title">Theme</li>
+            <!-- <li class="nav-title">Theme</li> -->
             <li class="nav-item">
-              <a class="nav-link" href="colors.html">
-                <i class="nav-icon icon-drop"></i> Colors</a>
+              <a class="nav-link" href="usuario">
+                <i class="nav-icon icon-user"></i> Usuarios</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="typography.html">
-                <i class="nav-icon icon-pencil"></i> Typography</a>
+             <a class="nav-link" href="categoria">
+                 <i class="nav-icon icon-notebook"></i> Categorias</a>
             </li>
-            <li class="nav-title">Components</li>
+            <li class="nav-item">
+             <a class="nav-link" href="slide">
+                 <i class="nav-icon icon-screen-desktop"></i> Slide</a>
+            </li>
+            <!-- <li class="nav-title">Components</li> -->
             <li class="nav-item nav-dropdown">
-              <a class="nav-link nav-dropdown-toggle" href="#">
-                <i class="nav-icon icon-puzzle"></i> Base</a>
+              <a class="nav-link nav-dropdown-toggle" href="proyectos">
+                <i class="nav-icon icon-note"></i> Proyectos</a>
               <ul class="nav-dropdown-items">
                 <li class="nav-item">
-                  <a class="nav-link" href="base/breadcrumb.html">
-                    <i class="nav-icon icon-puzzle"></i> Breadcrumb</a>
+                  <a class="nav-link" href="nuevoProyecto">
+                    <i class="nav-icon icon-pencil"></i> Nuevo Proyecto</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="base/cards.html">
-                    <i class="nav-icon icon-puzzle"></i> Cards</a>
+                  <a class="nav-link" href="proyectos">
+                    <i class="nav-icon icon-book-open"></i> ver Proyectos</a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                   <a class="nav-link" href="base/carousel.html">
                     <i class="nav-icon icon-puzzle"></i> Carousel</a>
                 </li>
@@ -40,8 +44,8 @@
                 <li class="nav-item">
                   <a class="nav-link" href="base/forms.html">
                     <i class="nav-icon icon-puzzle"></i> Forms</a>
-                </li>
-                <li class="nav-item">
+                </li> -->
+                <!-- <li class="nav-item">
                   <a class="nav-link" href="base/jumbotron.html">
                     <i class="nav-icon icon-puzzle"></i> Jumbotron</a>
                 </li>
@@ -84,9 +88,9 @@
                 <li class="nav-item">
                   <a class="nav-link" href="base/tooltips.html">
                     <i class="nav-icon icon-puzzle"></i> Tooltips</a>
-                </li>
+                </li> -->
               </ul>
-            </li>
+            </li><!-- 
             <li class="nav-item nav-dropdown">
               <a class="nav-link nav-dropdown-toggle" href="#">
                 <i class="nav-icon icon-cursor"></i> Buttons</a>
@@ -156,13 +160,13 @@
                     <i class="nav-icon icon-bell"></i> Modals</a>
                 </li>
               </ul>
-            </li>
-            <li class="nav-item">
+            </li> -->
+            <!-- <li class="nav-item">
               <a class="nav-link" href="widgets.html">
                 <i class="nav-icon icon-calculator"></i> Widgets
                 <span class="badge badge-primary">NEW</span>
               </a>
-            </li>
+            </li> -->
           </ul>
         </nav>
         <button class="sidebar-minimizer brand-minimizer" type="button"></button>
