@@ -15,6 +15,7 @@
     <!-- Bootstrap core CSS -->
     <link href="views/css/bootstrap.min.css" rel="stylesheet">
     <script src="views/js/jquery.min.js"></script>
+
     <!-- Add this css File in head tag-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" media="all">
 
@@ -33,10 +34,13 @@
         }
     ?>
     <link rel="stylesheet" href="views/css/main.css">
-
     <!-- Fancy box -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.4/jquery.fancybox.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.4/jquery.fancybox.js"></script>
+
+    
+    <script src="views/js/jquery.slim.min.js"></script>
+    
   </head>
 
   <body>

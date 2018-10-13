@@ -8,13 +8,7 @@
 				$enlaces == "usuario" ||
 				$enlaces == "slide" ||
 				$enlaces == "proyectos" ||
-				$enlaces == "nuevoProyecto" ||
-				$enlaces == "cultural" ||
-				$enlaces == "detail" ||
-				$enlaces == "houses" ||
-				$enlaces == "landscaping" ||
-				$enlaces == "plastic" ||
-				$enlaces == "public" ||
+				$enlaces == "nuevoProyecto" ||		
 				$enlaces == "unbuilt" ){
 
 				$module = "views/modules/".$enlaces.".php";
