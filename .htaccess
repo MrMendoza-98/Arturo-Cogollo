@@ -1,0 +1,9 @@
+#IMPEDIR QUE PUEDAN VER EL DIRECTORIO EN FORMA DE LISTADO
+
+Options All -Indexes
+
+#Url Amigables
+
+RewriteEngine on
+
+RewriteRule ^(\w+)$ index.php?action=$1
