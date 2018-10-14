@@ -44,8 +44,11 @@
                       </div>
                       <!-- CUERPO DE LA CARD -->
                       <div class="card-body">
-                                        
-        
+                                         
+                        <?php 
+                          $verUser = new GestorUsuario();
+                          $verUser -> listarUsuarios();
+                        ?>
 
                       </div>
                     </div>

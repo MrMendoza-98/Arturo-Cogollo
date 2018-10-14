@@ -20,29 +20,27 @@ class Ingreso{
 						// echo "db ".$respuesta["password"]." pass ".$_POST["passwordIngreso"];
 						if(password_verify($passwordIngreso, $respuesta["password"])){
 
-
-						// if(!empty($datosController['usuario'])) {
-						// 	$intentos = 0;
+							$intentos = 0;
 
 						// 	$datosActualizar = array('usuarioActual' => $usuarioActual, "actualizarIntentos" => $intentos);
 
 						// 	$respuestaActualizar = IngresoModels::intentosModel($datosActualizar, "usuarios");
 
-						// 	session_start();
+							session_start();
 
-						// 	$_SESSION["validar"] = true;
-						// 	$_SESSION["usuario"] = $usuarioActual;
+							$_SESSION["validar"] = true;
+							$_SESSION["usuario"] = $usuarioActual;
 
-						// 	header("Location:inicio");
-						// }
-							echo "exito";
 							header("Location:inicio");
+						 
 						}else{
-							print "<h5 class='alert alert-danger mt-3'>Usuario o Contraseña Incorrecta 2</h5>";
+							print "<h5 class='alert alert-danger mt-3'>Usuario o Contraseña Incorrecta</h5>";
+							$intentos = $intentos + 1;
+							
 						}
 						
 					}else{
-						// $intentos = $intentos + 1;
+						$intentos = $intentos + 1;
 
 						// $datosActualizar = array('usuarioActual' => $usuarioActual, "actualizarIntentos" => $intentos);
 
