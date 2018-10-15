@@ -70,5 +70,6 @@ class GestorUsuario{
 	#LISTAR LOS USUARIOS
 	public function listarUsuarios(){
 		echo '<h4>Listado</h4>';
+		
 	}
 }
