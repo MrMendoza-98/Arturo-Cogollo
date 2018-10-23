@@ -21,13 +21,14 @@ if(!$_SESSION["validar"]){
       <main class="main">
         <!-- Breadcrumb-->
         <ol class="breadcrumb">
-          <li class="breadcrumb-item">Usuarios</li>
-          <li class="breadcrumb-item">
+          <h4 class="breadcrumb-item">Usuarios</h4>
+          <!-- <li class="breadcrumb-item">
             <a href="#">Admin</a>
           </li>
-          <li class="breadcrumb-item active">Dashboard</li>
+          <li class="breadcrumb-item active">Dashboard</li> -->
+
           <!-- Breadcrumb Menu-->
-          <li class="breadcrumb-menu d-md-down-none">
+          <!-- <li class="breadcrumb-menu d-md-down-none">
             <div class="btn-group" role="group" aria-label="Button group">
               <a class="btn" href="#">
                 <i class="icon-speech"></i>
@@ -37,7 +38,7 @@ if(!$_SESSION["validar"]){
               <a class="btn" href="#">
                 <i class="icon-settings"></i>  Settings</a>
             </div>
-          </li>
+          </li> -->
         </ol> 
 
         
@@ -57,12 +58,26 @@ if(!$_SESSION["validar"]){
                       </div>
                       <!-- CUERPO DE LA CARD -->
                       <div class="card-body">
-                                         
-                        <?php 
-                          $verUser = new GestorUsuario();
-                          $verUser -> listarUsuarios();
-                        ?>
+                        <table id="myTable" class="table table-striped table-bordered dt-responsive table-hover nowrap">
+                            <thead>
+                                <tr>
+                                    <th>Nombres</th>
+                                    <th>Apellidos</th>
+                                    <th>Tel / cel</th>
+                                    <th>Email</th>
+                                    <th>Rol</th>
+                                    <th>Opciones</th>
+                                </tr>
+                            </thead>
 
+                            <tbody>
+                              <?php 
+                                $verUser = new GestorUsuario();
+                                $verUser -> listarUsuarios();
+                              ?>
+                            </tbody>
+
+                        </table>
                       </div>
                     </div>
                     <!-- FIN DE LA CARD -->
@@ -164,7 +179,7 @@ if(!$_SESSION["validar"]){
                                             <select class="custom-select" id="rolUser" name="rolUser">
                                               <option selected>Seleccione un Rol</option>
                                               <option value="1">Administrador</option>
-                                              <option value="2">Auxiliar</option>
+                                              <option value="2">Editor</option>
                                             </select>
                                           </div>
                                           <!-- LOS BOTONES DE ACCION -->

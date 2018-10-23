@@ -35,9 +35,9 @@ class GestorUsuariosModel{
 
 	#MOSTRAR ARTÍCULOS
 	#------------------------------------------------------
-	public function mostrarArticulosModel($tabla){
+	public function mostrarUsuariosModel($tabla){
 
-		$stmt = Conexion::conectar()->prepare("SELECT id, titulo, introduccion, ruta, contenido FROM $tabla ORDER BY orden ASC");
+		$stmt = Conexion::conectar()->prepare("SELECT idUser, name, lastName, phone, email, rol FROM $tabla");
 
 		$stmt -> execute();
 

@@ -69,7 +69,28 @@ class GestorUsuario{
 
 	#LISTAR LOS USUARIOS
 	public function listarUsuarios(){
-		echo '<h4>Listado</h4>';
+		$respuesta = GestorUsuariosModel::mostrarUsuariosModel("users");
+		// var_dump($respuesta);
+
+		foreach ($respuesta as $key => $item) {
+			if($item["rol"] == 1){
+				$rol = 'Administrador';
+			}elseif ($item["rol"] == 2) {
+				$rol = ' Editor';
+			}
+			echo '<tr>
+                  <td>'.$item["name"].'</td>
+                  <td>'.$item["lastName"].'</td>
+                  <td>'.$item["phone"].'</td>
+                  <td>'.$item["email"].'</td>
+                  <td>'.$rol.'</td>
+                  <td class="text-center">
+                  	<span id="'.$item["idUser"].'"class="btn btn-warning mr-2"><i class="fas fa-edit"></i></span>
+                  	<span id="'.$item["idUser"].'"class="btn btn-danger "><i class="fas fa-trash-alt"></i></span>
+                  </td>
+              </tr>';
+		}
+		
 		
 	}
 }

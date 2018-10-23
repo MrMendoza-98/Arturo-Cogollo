@@ -11,14 +11,14 @@
       </button>
       <ul class="nav navbar-nav d-md-down-none">
         <li class="nav-item px-3">
-          <a class="nav-link" href="#">Dashboard</a>
+          <a class="nav-link" href="inicio">Inicio</a>
         </li>
         <li class="nav-item px-3">
-          <a class="nav-link" href="#">Users</a>
+          <a class="nav-link" href="usuario">Usuarios</a>
         </li>
-        <li class="nav-item px-3">
-          <a class="nav-link" href="#">Settings</a>
-        </li>
+        <!-- <li class="nav-item px-3">
+          <a class="nav-link" href="">Settings</a>
+        </li> -->
       </ul>
 
       <ul class="nav navbar-nav ml-auto">

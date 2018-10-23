@@ -14,6 +14,13 @@
     <link href="views/css/style.min.css" rel="stylesheet">
     <link href="views/css/pace.min.css" rel="stylesheet">
 
+    <!-- Librery Datatables -->
+    <!-- <link href="views/css/dataTables.bootstrap.min.css" rel="stylesheet"> -->
+    <link href="views/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+
+
 	<!-- CoreUI and necessary plugins-->
     <script src="views/js/jquery.min.js"></script>
     <script src="views/js/popper.min.js"></script>
@@ -22,6 +29,8 @@
     <script src="views/js/perfect-scrollbar.min.js"></script>
     <script src="views/js/coreui.min.js"></script>
     <script src="views/js/sweetalert2.min.js"></script>
+    <script src="views/js/jquery.dataTables.min.js"></script>
+
     
 </head>
 <body <?php if(!isset($_GET["action"]) || $_GET["action"]=="login"){ echo 'class="app flex-row align-items-center"';}else{echo 'class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show"';} ?> >
@@ -31,5 +40,6 @@
         $modulos -> enlacesController();
 
     ?>
+    <script src="views/js/app.js"></script>
 </body>
 </html>
