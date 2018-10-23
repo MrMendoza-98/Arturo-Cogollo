@@ -9,7 +9,7 @@
 				$enlaces == "slide" ||
 				$enlaces == "proyectos" ||
 				$enlaces == "nuevoProyecto" ||		
-				$enlaces == "unbuilt" ){
+				$enlaces == "salir" ){
 
 				$module = "views/modules/".$enlaces.".php";
 			}

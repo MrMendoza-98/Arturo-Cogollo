@@ -1,3 +1,16 @@
+<?php
+
+session_start();
+
+if(!$_SESSION["validar"]){
+
+  header("location:login");
+
+  exit();
+
+}
+
+?>
 	<!-- INCLUIR EL MENU SUPERIOR -->
 	<?php include 'views/modules/topMenu.php'; ?>
     <div class="app-body">
