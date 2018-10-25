@@ -19,8 +19,9 @@
     <link href="views/css/jquery.dataTables.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
-
-
+    
+    <link rel="stylesheet" type="text/css" href="views/css/app.css">
+    
 	<!-- CoreUI and necessary plugins-->
     <script src="views/js/jquery.min.js"></script>
     <script src="views/js/popper.min.js"></script>
@@ -42,5 +43,6 @@
     ?>
     <script src="views/js/app.js"></script>
     <script src="views/js/gestorUsuario.js"></script>
+    <script src="views/js/gestorCategoria.js"></script>
 </body>
 </html>
