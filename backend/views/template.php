@@ -41,5 +41,6 @@
 
     ?>
     <script src="views/js/app.js"></script>
+    <script src="views/js/gestorUsuario.js"></script>
 </body>
 </html>

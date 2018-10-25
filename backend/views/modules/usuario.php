@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+error_reporting(0);
 
 if(!$_SESSION["validar"]){
 
@@ -72,8 +73,11 @@ if(!$_SESSION["validar"]){
 
                             <tbody>
                               <?php 
+
                                 $verUser = new GestorUsuario();
                                 $verUser -> listarUsuarios();
+                                $verUser -> editarUsuario();
+                                $verUser -> eliminarUsuario();
                               ?>
                             </tbody>
 
@@ -87,7 +91,7 @@ if(!$_SESSION["validar"]){
                       <div class="modal-dialog" role="document">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Nuevo Usuario</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
@@ -200,6 +204,11 @@ if(!$_SESSION["validar"]){
                       </div>
                     </div>
                       <!-- FIN DEL MODAL -->
+
+    
+                    <!-- CODIGO DEL MODAL DE ACTUALIZAR -->
+                    
+                      <!-- FIN DEL MODAL ACTUALIZAR-->
 
                   </div>
                 </div>

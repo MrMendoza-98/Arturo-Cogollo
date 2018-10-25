@@ -47,13 +47,28 @@ class GestorUsuariosModel{
 
 	}
 
-	#BORRAR ARTICULOS
+	#MOSTRAR USUARIO ESPECIFICO
+	#------------------------------------------------------
+	public function buscarUsuarioModel($id, $tabla){
+
+		$stmt = Conexion::conectar()->prepare("SELECT idUser, name, lastName, phone, email, rol FROM $tabla WHERE idUser = :id");
+		$stmt -> bindParam(":id", $id, PDO::PARAM_STR);
+
+		$stmt -> execute();
+
+		return $stmt -> fetch();
+
+		$stmt -> close();
+
+	}
+
+	#BORRAR USUARIO
 	#-----------------------------------------------------
-	public function borrarArticuloModel($datosModel, $tabla){
+	public function borrarUsuarioModel($id, $tabla){
 
-		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id = :id");
+		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE idUser = :id");
 
-		$stmt->bindParam(":id", $datosModel, PDO::PARAM_INT);
+		$stmt->bindParam(":id", $id, PDO::PARAM_STR);
 
 		if($stmt->execute()){
 
@@ -73,15 +88,18 @@ class GestorUsuariosModel{
 
 	#ACTUALIZAR ARTICULOS
 	#---------------------------------------------------
-	public function editarArticuloModel($datosModel, $tabla){
+	public function actualizarUsuarioModel($datosModel, $tabla){
 
-		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET titulo = :titulo, introduccion = :introduccion, ruta = :ruta, contenido = :contenido WHERE id = :id");	
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET name = :name, lastName = :lastName, phone = :phone, email = :email, password = :password, rol = :rol, attempts = :attempts WHERE idUser = :idUser");	
 
-		$stmt -> bindParam(":titulo", $datosModel["titulo"], PDO::PARAM_STR);
-		$stmt -> bindParam(":introduccion", $datosModel["introduccion"], PDO::PARAM_STR);
-		$stmt -> bindParam(":ruta", $datosModel["ruta"], PDO::PARAM_STR);
-		$stmt -> bindParam(":contenido", $datosModel["contenido"], PDO::PARAM_STR);
-		$stmt -> bindParam(":id", $datosModel["id"], PDO::PARAM_INT);
+		$stmt -> bindParam(":name", $datosModel["name"], PDO::PARAM_STR);
+		$stmt -> bindParam(":lastName", $datosModel["lastname"], PDO::PARAM_STR);
+		$stmt -> bindParam(":phone", $datosModel["phone"], PDO::PARAM_STR);
+		$stmt -> bindParam(":email", $datosModel["email"], PDO::PARAM_STR);
+		$stmt -> bindParam(":password", $datosModel["password"], PDO::PARAM_STR);
+		$stmt -> bindParam(":rol", $datosModel["rol"], PDO::PARAM_STR);
+		$stmt -> bindParam(":attempts", $datosModel["attempts"], PDO::PARAM_STR);
+		$stmt -> bindParam(":idUser", $datosModel["id"], PDO::PARAM_INT);
 
 		if($stmt->execute()){
 
@@ -97,40 +115,6 @@ class GestorUsuariosModel{
 
 	}
 
-	#ACTUALIZAR ORDEN 
-	#---------------------------------------------------
-	public function actualizarOrdenModel($datos, $tabla){
-
-		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET orden = :orden WHERE id = :id");
-
-		$stmt -> bindParam(":orden", $datos["ordenItem"], PDO::PARAM_STR);
-		$stmt -> bindParam(":id", $datos["ordenArticulos"], PDO::PARAM_INT);
-
-		if($stmt -> execute()){
-
-			return "ok";
-		}
-
-		else{
-			return "error";
-		}
-
-		$stmt -> close();
-
-	}
-
-	#SELECCIONAR ORDEN 
-	#---------------------------------------------------
-	public function seleccionarOrdenModel($tabla){
-
-		$stmt = Conexion::conectar()->prepare("SELECT id, titulo, introduccion, ruta, contenido FROM $tabla ORDER BY orden ASC");
-
-		$stmt -> execute();
-
-		return $stmt->fetchAll();
-
-		$stmt->close();
-
-	}
+	
 
 }
