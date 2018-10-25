@@ -111,7 +111,7 @@ if(!$_SESSION["validar"]){
                                               <div class="input-group-prepend">
                                                 <span class="input-group-text">Nombres</span>
                                               </div>
-                                              <input class="form-control" id="nameUser" type="text" name="nameUser">
+                                              <input class="form-control" id="nameUser" type="text" name="nameUser" required>
                                               <div class="input-group-append">
                                                 <span class="input-group-text">
                                                   <i class="fa fa-user"></i>
@@ -125,7 +125,7 @@ if(!$_SESSION["validar"]){
                                               <div class="input-group-prepend">
                                                 <span class="input-group-text">Apellidos</span>
                                               </div>
-                                              <input class="form-control" id="lastnameUser" type="text" name="lastnameUser">
+                                              <input class="form-control" id="lastnameUser" type="text" name="lastnameUser" required>
                                               <div class="input-group-append">
                                                 <span class="input-group-text">
                                                   <i class="fa fa-user"></i>
@@ -139,7 +139,7 @@ if(!$_SESSION["validar"]){
                                               <div class="input-group-prepend">
                                                 <span class="input-group-text">Celular / Telefono</span>
                                               </div>
-                                              <input class="form-control" id="phoneUser" type="number" name="phoneUser">
+                                              <input class="form-control" id="phoneUser" type="number" name="phoneUser" required>
                                               <div class="input-group-append">
                                                 <span class="input-group-text">
                                                   <i class="fa fa-phone"></i>
@@ -153,7 +153,7 @@ if(!$_SESSION["validar"]){
                                               <div class="input-group-prepend">
                                                 <span class="input-group-text">Email</span>
                                               </div>
-                                              <input class="form-control" id="emailUser" type="email" name="emailUser">
+                                              <input class="form-control" id="emailUser" type="email" name="emailUser" required>
                                               <div class="input-group-append">
                                                 <span class="input-group-text">
                                                   <i class="fa fa-envelope"></i>
@@ -167,7 +167,7 @@ if(!$_SESSION["validar"]){
                                               <div class="input-group-prepend">
                                                 <span class="input-group-text">Password</span>
                                               </div>
-                                              <input class="form-control" id="passwordUser" type="password" name="passwordUser">
+                                              <input class="form-control" id="passwordUser" type="password" name="passwordUser" required>
                                               <div class="input-group-append">
                                                 <span class="input-group-text">
                                                   <i class="fa fa-asterisk"></i>
@@ -181,7 +181,6 @@ if(!$_SESSION["validar"]){
                                               <label class="input-group-text" for="selectRol">Rol</label>
                                             </div>
                                             <select class="custom-select" id="rolUser" name="rolUser">
-                                              <option selected>Seleccione un Rol</option>
                                               <option value="1">Administrador</option>
                                               <option value="2">Editor</option>
                                             </select>
@@ -204,11 +203,6 @@ if(!$_SESSION["validar"]){
                       </div>
                     </div>
                       <!-- FIN DEL MODAL -->
-
-    
-                    <!-- CODIGO DEL MODAL DE ACTUALIZAR -->
-                    
-                      <!-- FIN DEL MODAL ACTUALIZAR-->
 
                   </div>
                 </div>
