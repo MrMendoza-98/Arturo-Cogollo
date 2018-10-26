@@ -38,7 +38,7 @@ class GestorCategoria{
 
 			$name = $_POST["name"];
 			$descrip = $_POST["description"];
-			$imagenType = $_FILES['imagen']['type'];
+			echo $imagenType = $_FILES['imagen']['type'];
 
 			if($imagenType == 'image/jpeg' || $imagenType == 'image/png'){
 
@@ -86,14 +86,164 @@ class GestorCategoria{
 						</div>';
 			}
 
+		}
+
+	}
+
+
+	#ACTUALIZAR CATEGORIA 
+	#------------------------------------------------------
+
+	public function editarCategoria(){
+		if(isset($_GET["idEdit"])){
+
+			$idCategoryEdit = $_GET["idEdit"];
+
+			$buscar = GestorCategoriaModel::buscarCategoriaModel($idCategoryEdit, "categories");
+
+			// var_dump($buscar);
+
+			// PARA LLAMAR EL MODAL AL DARLE CLICK
 			
-			//echo $image = $_FILES["imagen"]["name"];
+			echo '<script>
+				   $(document).ready(function()
+				   {
+				      $("#editCategory").modal("show");
+				   });
+				</script>';
+
+			echo '<div class="modal fade" id="editCategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		          <div class="modal-dialog" role="document">
+		            <div class="modal-content">
+		              <div class="modal-header">
+		                <h5 class="modal-title" id="exampleModalLabel">Editar Categoria</h5>
+		                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		                  <span aria-hidden="true">&times;</span>
+		                </button>
+		              </div>
+		              <div class="modal-body">
+		    
+		                <div class="row">
+		                  <!-- INICIO DEL FORMULARIO -->
+		                      <div class="col-lg-12">
+		                        <div class="">
+		                          <div class="card-body">
+		                            <!-- INICIO DEL FORMULARIO -->
+		                            <form action="" method="post" enctype="multipart/form-data">
+		                              <!-- GRUPO DE INPUTS -->
+		                              <!-- INPUT NOMBRE -->
+		                              <div class="form-group">
+		                              
+		                                <label for="name">Nombre Categoria</label>
+		                                <input class="form-control" id="nameEdit" type="text" name="nameEdit" required value="'.$buscar["name"].'">
+		                                
+		                              
+		                              </div>
+		                              <!-- INPUT DESCRIPCION -->
+		                              <div class="form-group">
+		                                <label for="description">Descripción</label>
+		                                <textarea class="form-control" name="descriptionEdit" id="descriptionEdit">'.$buscar["description"].'</textarea>
+		                              </div>
+
+		                              <!-- INPUT IMAGEN -->
+		                              <div class="form-group">
+		                                <label for="imagen">Imagen</label>
+		                                <input type="file" class="form-control-file" name="imagenEdit" id="imagenEdit" required>
+		                                <br>
+		                                <div id="preview"></div>
+		                              </div>
+
+		                              <!-- LOS BOTONES DE ACCION -->
+		                              <div class="form-group form-actions">
+		                                <button class="btn btn-primary" type="submit">Crear Categoria</button>
+		                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+		                              </div>
+		                            </form>
+		                            <!-- FIN DEL FORMULAIO -->
+		                          </div>
+		                        </div>
+		                      </div>
+		                  <!-- FIN DEL FORMULARIO -->
+
+		                </div>
+
+		              </div>
+		            </div>
+		          </div>
+		        </div>';
+
+
+		    // RECOGER LOS DATOS DEL INPUT
+
+
+		    if(isset($_POST["nameEdit"])){
+
+				echo $nameEdit = $_POST["nameEdit"];
+		    	echo $descripEdit = $_POST["descriptionEdit"];
+				echo $imagenType = $_FILES['imagenEdit']['type'];
+				echo $buscar["image"];
+
+				if($imagenType == 'image/jpeg' || $imagenType == 'image/png'){
+
+					setlocale(LC_ALL,"es_CO");
+					$imagenName = date("d").date("m").date("Y").date("s");
+
+					$route = "views/images/categories/".$imagenName;
+
+					$route = $route.basename($_FILES['imagenEdit']['name']);
+					
+					move_uploaded_file($_FILES['imagenEdit']['tmp_name'], $route);
+
+					$datosController = array("id"=> $idCategoryEdit, "name" => $nameEdit, "description" => $descripEdit, "image" => $route);
+
+					// $respuesta = GestorCategoriaModel::crearCategoriaModel($datosController, "categories");
+
+					if($respuesta == "ok"){
+
+						echo'<script>
+
+							swal({
+								  title: "¡OK!",
+								  text: "¡La categoria ha sido creado correctamente!",
+								  type: "success",
+								  confirmButtonText: "Creado"	  
+							}).then(function(){
+							    window.location = "categoria";
+							});
+							
+						</script>';
+
+					}
+
+					else{
+
+						echo $respuesta;
+
+					}
+					#FIN DE LA RESPUESTA
+
+				}else{
+
+					echo 	'<div class="alert alert-danger text-center" role="alert">
+							 	<h4>Solo se permiten IMAGENES tipo JPG o PNG.</h4>
+							</div>';
+				}
+
+			}
+
+
+		}
+	}
+
+
+	#ELIMINAR CATEGORIA
+	#--------------------------------------------------
+	public function eliminarCategoria(){
+		if(isset($_GET["idDel"])){
 
 
 
 
 		}
-
 	}
-
 }
