@@ -56,6 +56,7 @@ if(!$_SESSION["validar"]){
 
                                 $verCategoria = new GestorCategoria();
                                 $verCategoria -> listarCategorias();
+                                $verCategoria -> crearCategoria();
                                 // $verCategoria -> editarUsuario();
                                 // $verCategoria -> eliminarUsuario();
                               ?>

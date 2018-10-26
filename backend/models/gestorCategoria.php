@@ -17,4 +17,29 @@ class GestorCategoriaModel{
 	}
 
 
+	#CREA CATEGORIA 
+	#------------------------------------------
+	public function crearCategoriaModel($datosModel, $tabla){
+
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (name, description, image) VALUES (:name, :description, :image)");
+
+		$stmt -> bindParam(":name", $datosModel["name"], PDO::PARAM_STR);
+		$stmt -> bindParam(":description", $datosModel["description"], PDO::PARAM_STR);
+		$stmt -> bindParam(":image", $datosModel["image"], PDO::PARAM_STR);
+
+		if($stmt->execute()){
+
+			return "ok";
+		}
+
+		else{
+
+			return "error";
+		}
+
+		$stmt->close();
+
+	}
+
+
 }
