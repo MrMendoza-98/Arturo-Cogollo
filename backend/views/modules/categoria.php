@@ -47,16 +47,17 @@ if(!$_SESSION["validar"]){
                                     <th>Nombre</th>
                                     <th>Descripcion</th>
                                     <th>Imagen</th>
+                                    <th>Opciones</th>
                                 </tr>
                             </thead>
 
                             <tbody>
                               <?php 
 
-                                // $verUser = new GestorUsuario();
-                                // $verUser -> listarUsuarios();
-                                // $verUser -> editarUsuario();
-                                // $verUser -> eliminarUsuario();
+                                $verCategoria = new GestorCategoria();
+                                $verCategoria -> listarCategorias();
+                                // $verCategoria -> editarUsuario();
+                                // $verCategoria -> eliminarUsuario();
                               ?>
                             </tbody>
 
