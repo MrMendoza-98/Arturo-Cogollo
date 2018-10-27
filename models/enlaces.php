@@ -15,6 +15,7 @@
 				$enlaces == "landscaping" ||
 				$enlaces == "plastic" ||
 				$enlaces == "public" ||
+				$enlaces == "proyects" ||
 				$enlaces == "unbuilt" ){
 
 				$module = "views/modules/".$enlaces.".php";

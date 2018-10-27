@@ -31,14 +31,10 @@
                     <li><a class="smoothscroll title"  href="categories" title="about">Categories</a></li>
                     <ul>
                         <li><a class="subtitle" href="all">All</a></li>
-                        <li><a class="subtitle" href="houses">Houses / New Buildings</a></li>
-                        <li><a class="subtitle" href="apartments">Apartments / Refurb</a></li>
-                        <li><a class="subtitle" href="cultural">Cultural</a></li>
-                        <li><a class="subtitle" href="commercial">Commercial</a></li>
-                        <li><a class="subtitle" href="plastic">Plastic Surgery Clinic</a></li>
-                        <li><a class="subtitle" href="landscaping">Landscaping</a></li>
-                        <li><a class="subtitle" href="public">Public Buildings</a></li>
-                        <li><a class="subtitle" href="unbuilt">Unbuilt</a></li>
+                        <?php 
+                            $menu = new GestorCategoria();
+                            $menu -> menu();
+                        ?>
                     </ul>
                     <li><a class="smoothscroll title"  href="contact" title="contact">Contact</a></li>
                 </ul>
