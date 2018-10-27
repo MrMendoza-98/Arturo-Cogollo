@@ -155,7 +155,7 @@ class GestorCategoria{
 
 		                              <!-- LOS BOTONES DE ACCION -->
 		                              <div class="form-group form-actions">
-		                                <button class="btn btn-primary" type="submit">Crear Categoria</button>
+		                                <button class="btn btn-primary" type="submit">Editar Categoria</button>
 		                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
 		                              </div>
 		                            </form>
@@ -178,10 +178,10 @@ class GestorCategoria{
 
 		    if(isset($_POST["nameEdit"])){
 
-				echo $nameEdit = $_POST["nameEdit"];
-		    	echo $descripEdit = $_POST["descriptionEdit"];
-				echo $imagenType = $_FILES['imagenEdit']['type'];
-				echo $buscar["image"];
+				$nameEdit = $_POST["nameEdit"];
+		    	$descripEdit = $_POST["descriptionEdit"];
+				$imagenType = $_FILES['imagenEdit']['type'];
+				$rutaAntigua = $buscar["image"];
 
 				if($imagenType == 'image/jpeg' || $imagenType == 'image/png'){
 
@@ -196,15 +196,16 @@ class GestorCategoria{
 
 					$datosController = array("id"=> $idCategoryEdit, "name" => $nameEdit, "description" => $descripEdit, "image" => $route);
 
-					// $respuesta = GestorCategoriaModel::crearCategoriaModel($datosController, "categories");
+					$respuesta = GestorCategoriaModel::editarCategoriaModel($datosController, "categories");
 
 					if($respuesta == "ok"){
+						unlink($rutaAntigua);
 
 						echo'<script>
 
 							swal({
 								  title: "¡OK!",
-								  text: "¡La categoria ha sido creado correctamente!",
+								  text: "¡La categoria ha sido Actualizada correctamente!",
 								  type: "success",
 								  confirmButtonText: "Creado"	  
 							}).then(function(){
@@ -236,14 +237,67 @@ class GestorCategoria{
 	}
 
 
-	#ELIMINAR CATEGORIA
+	#PREGUNTAR SI ELIMINAR CATEGORIA
 	#--------------------------------------------------
 	public function eliminarCategoria(){
 		if(isset($_GET["idDel"])){
 
+			$idCategoryDel = $_GET["idDel"];
 
+			$buscar = GestorCategoriaModel::buscarCategoriaModel($idCategoryDel, "categories");
+			// var_dump($buscar);
+
+			echo '<script>
+				swal({
+				  title: "Esta seguro de Borrar la Categoria '.$buscar["name"].'",
+				  type: "warning",
+				  showCancelButton: true,
+				  confirmButtonColor: "#3085d6",
+				  cancelButtonColor: "#d33",
+				  confirmButtonText: "Si, Estoy Seguro!"
+				}).then((result) => {
+				  if (result.value) {
+				    window.location.href="?action=categoria&idBor='.$buscar["idCategory"].'"
+				  }else{
+				  	 window.location = "categoria";
+				  }
+				})
+				</script>';
+			
+
+		}
+	}
+
+
+	#BORRAR CATEGORIA
+	#----------------------
+	public function EliminarCategoriaFinal(){
+
+		if (isset($_GET["idBor"])) {
+			
+			$idCategoryBorrar = $_GET["idBor"];
+
+			$buscar = GestorCategoriaModel::buscarCategoriaModel($idCategoryBorrar, "categories");
+
+			$eliminar = GestorCategoriaModel::borrarCategoriaModel($idCategoryBorrar, "categories");
+			// var_dump($eliminar);
+			unlink($buscar["image"]);
+			// var_dump($respuesta);
+
+			echo 	'<script>
+						swal({
+						  title: "La Categoria '.$buscar["name"].'",
+						  text: "Fue Borrado!",
+						  type: "success",
+						  confirmButtonText: "Eliminado"
+						}).then(function(){
+						    window.location = "categoria";
+						});
+					</script>';
 
 
 		}
+
+
 	}
 }
