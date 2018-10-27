@@ -78,6 +78,7 @@ if(!$_SESSION["validar"]){
                                 $verUser -> listarUsuarios();
                                 $verUser -> editarUsuario();
                                 $verUser -> eliminarUsuario();
+                                $verUser -> EliminarUsuarioFinal();
                               ?>
                             </tbody>
 

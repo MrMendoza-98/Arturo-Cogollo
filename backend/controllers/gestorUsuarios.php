@@ -281,12 +281,42 @@ class GestorUsuario{
 		}
 	}
 
+	#PREGUNTAR SI ELIMINAR USUARIO
+	#----------------------------------------------------------
+	public function eliminarUsuario(){
+		if(isset($_GET["idDel"])){
+
+			$idUserDel = $_GET["idDel"];
+
+			$buscar = GestorUsuariosModel::buscarUsuarioModel($idUserDel, "users");
+			// var_dump($buscar);
+
+			echo '<script>
+				swal({
+				  title: "Esta seguro de Borrar al Usuario '.$buscar["name"].' '.$buscar["lastName"].'",
+				  type: "warning",
+				  showCancelButton: true,
+				  confirmButtonColor: "#3085d6",
+				  cancelButtonColor: "#d33",
+				  confirmButtonText: "Si, Estoy Seguro!"
+				}).then((result) => {
+				  if (result.value) {
+				    window.location.href="?action=usuario&idBor='.$buscar["idUser"].'"
+				  }else{
+				  	 window.location = "usuario";
+				  }
+				})
+				</script>';
+			
+
+		}
+	}
 
 	#ELIMINAR LOS USUARIOS 
 	#-----------------------------------------------------------
-	public function eliminarUsuario(){
-		if(isset($_GET["idDel"])){
-			$idUserDelete = $_GET["idDel"];
+	public function EliminarUsuarioFinal(){
+		if(isset($_GET["idBor"])){
+			$idUserDelete = $_GET["idBor"];
 
 			$user = GestorUsuariosModel::buscarUsuarioModel($idUserDelete, "users");
 
