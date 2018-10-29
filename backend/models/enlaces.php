@@ -8,7 +8,8 @@
 				$enlaces == "usuario" ||
 				$enlaces == "slide" ||
 				$enlaces == "proyectos" ||
-				$enlaces == "nuevoProyecto" ||		
+				$enlaces == "nuevoProyecto" ||
+				$enlaces == "imagenProyecto" ||		
 				$enlaces == "salir" ){
 
 				$module = "views/modules/".$enlaces.".php";

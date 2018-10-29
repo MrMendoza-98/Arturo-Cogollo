@@ -21,24 +21,69 @@ if(!$_SESSION["validar"]){
       <main class="main">
         <!-- Breadcrumb-->
         <ol class="breadcrumb">
-          <li class="breadcrumb-item">Nuevo Proyecto</li>
-          <li class="breadcrumb-item">
-            <a href="#">Admin</a>
-          </li>
-          <li class="breadcrumb-item active">Dashboard</li>
-          <!-- Breadcrumb Menu-->
-          <li class="breadcrumb-menu d-md-down-none">
-            <div class="btn-group" role="group" aria-label="Button group">
-              <a class="btn" href="#">
-                <i class="icon-speech"></i>
-              </a>
-              <a class="btn" href="./">
-                <i class="icon-graph"></i>  Dashboard</a>
-              <a class="btn" href="#">
-                <i class="icon-settings"></i>  Settings</a>
-            </div>
-          </li>
+          <h4 class="breadcrumb-item">Nuevo Proyecto</h4>
+          
         </ol> 
+
+
+        <div class="container-fluid">
+            <div class="animated fadeIn">
+              <div class="row">
+                <div class="col-lg-12">
+                  <!-- INICIO DE LA CARD -->
+                  <div class="card">
+                    <!-- CABECERA DE LA CARD -->
+                    <div class="card-header">
+                      <i class="fa fa-align-justify"></i> Nuevo Proyecto
+                      <div class="card-header-actions">
+                          <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newCategory">Nueva Categoria</button> -->
+                        </div>
+                    </div>
+                    <!-- CUERPO DE LA CARD -->
+                    <div class="card-body">
+                        <?php 
+                            $verProject = new GestorProyecto();
+                            $verProject -> crearProyecto();
+
+                        ?>
+
+                        <form method="POST" enctype="multipart/form-data">
+                            <!-- INPUT NOMBRE -->
+                            <div class="form-group">
+                              <label for="name">Nombre del Proyecto</label>
+                              <input type="text" class="form-control" id="name" name="name" placeholder="Nombre Categoria" required>
+                            </div>
+                  
+                            <!-- INPUT DESCRIPCION -->
+                            <div class="form-group">
+                              <label for="descrip">Descripción del Proyecto</label>
+                              <textarea class="form-control" id="descrip" name="descrip" rows="3"></textarea>
+                            </div>
+
+                            <!-- SELECT DE LA CATEGORIA -->
+                              <div class="form-group">
+                                <label for="categoria">Selecione una Categoria</label>
+                                <select class="form-control" id="categoria" name="categoria">
+                                  <?php $verProject -> listarCategorias(); ?>
+                                </select>
+                              </div>
+
+                              <!-- INPUT IMAGEN -->
+                               <div class="form-group">
+                                <div id="preview"></div>
+                                <label for="imagenProyect">Imagen de Portada</label>
+                                <input type="file" class="form-control-file" id="imagenProyect" name="imagenProyect">
+                              </div>
+
+                              <!-- BOTON ENVIAR -->
+                              <input type="submit" class="btn btn-primary" value="Crear Proyecto">
+                        </form>
+                    </div>
+                  <!-- FIN DE LA CARD -->
+                </div>
+              </div>
+            </div>
+        </div>
       </main>
       
       <!-- INCLUYE EL DESPLEGABLE DEL MENU SUPERIOR DERECHO-->

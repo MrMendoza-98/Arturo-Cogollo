@@ -30,6 +30,7 @@ class Ingreso{
 
 							$_SESSION["validar"] = true;
 							$_SESSION["usuario"] = $usuarioActual;
+							$_SESSION["idUser"] = $respuesta["idUser"];
 
 							header("Location:inicio");
 						 

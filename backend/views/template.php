@@ -19,6 +19,9 @@
     <link href="views/css/jquery.dataTables.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+
+    <!-- DROPZONE -->
+    <link rel="stylesheet" type="text/css" href="views/css/dropzone.css">
     
     <link rel="stylesheet" type="text/css" href="views/css/app.css">
     
@@ -31,6 +34,7 @@
     <script src="views/js/coreui.min.js"></script>
     <script src="views/js/sweetalert2.min.js"></script>
     <script src="views/js/jquery.dataTables.min.js"></script>
+    <script src="views/js/dropzone.js"></script>
 
     
 </head>
@@ -44,5 +48,7 @@
     <script src="views/js/app.js"></script>
     <script src="views/js/gestorUsuario.js"></script>
     <script src="views/js/gestorCategoria.js"></script>
+    <script src="views/js/gestorProyecto.js"></script>
+    <script src="views/js/gestorImages.js"></script>
 </body>
 </html>
