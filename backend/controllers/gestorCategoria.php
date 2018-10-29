@@ -14,7 +14,9 @@ class GestorCategoria{
 					<td>'.$item["name"].'</td>
 					<td>'.$item["description"].'</td>
 					<td class="">
-						<img src="'.$item["image"].'" class="rounded imagenGrande" title="'.$item["name"].'" height="auto" width="100">
+						<a href="index.php?action=categoria&idMod='.$item["idCategory"].'">
+							<img src="'.$item["image"].'" class="rounded imagenGrande" title="'.$item["name"].'" height="auto" width="100">
+						</a>
 					</td>
 					<td class="text-center">	
 	                  	<a class="btn btn-warning mr-2" href="index.php?action=categoria&idEdit='.$item["idCategory"].'">
@@ -299,5 +301,47 @@ class GestorCategoria{
 		}
 
 
+	}
+
+
+	#VER IMAGEN DE LA CATEGORIA GRANDE
+	#-------------------------------------------------
+	public function verImagen(){
+
+		if (isset($_GET["idMod"])) {
+			
+			$idMod = $_GET["idMod"];
+
+			$buscar = GestorCategoriaModel::buscarCategoriaModel($idMod, "categories");
+
+			// var_dump($buscar);
+
+			// PARA LLAMAR EL MODAL AL DARLE CLICK
+			
+			echo '<script>
+				   $(document).ready(function()
+				   {
+				      $("#viewImg").modal("show");
+				   });
+				</script>';
+
+			echo '<div class="modal fade" id="viewImg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title" id="exampleModalLabel">'.$buscar["name"].'</h5>
+				        <a type="button" class="close btn btn-outline-danger" href="categoria">
+				        
+				          <span aria-hidden="true">&times;</span>
+				        </a>
+				      </div>
+				      <div class="modal-body">
+				       	<img width="100%" height="auto" src="'.$buscar["image"].'" />
+				      </div>
+				      
+				    </div>
+				  </div>
+				</div>';
+		}
 	}
 }

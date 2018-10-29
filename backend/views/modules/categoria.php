@@ -60,6 +60,7 @@ if(!$_SESSION["validar"]){
                                 $verCategoria -> editarCategoria();
                                 $verCategoria -> eliminarCategoria();
                                 $verCategoria -> EliminarCategoriaFinal();
+                                $verCategoria ->verImagen();
                               ?>
                             </tbody>
 
