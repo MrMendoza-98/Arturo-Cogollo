@@ -77,5 +77,15 @@ class GestorProyectoModel{
 	}
 
 
+	#LISTAR TODOS LOS PROYECTOS
+	#------------------------------------
+	public function mostrarProyectosModel($tabla){
+		$stmt = Conexion::conectar()->prepare("SELECT p.idProject as idProyect, p.name as name, p.description as description, p.image as imagen, p.idCategory as idCategory, p.idUser, c.name as nameCategory FROM $tabla as p, categories as c WHERE p.idCategory = c.idCategory");
 
+		$stmt -> execute();
+
+		return $stmt -> fetchAll();
+
+		$stmt -> close();
+	}
 }

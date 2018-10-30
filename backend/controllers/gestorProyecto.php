@@ -75,4 +75,91 @@ class GestorProyecto{
 		}
 	}
 
+
+
+	#LISTAR LOS PROYECTOS
+	#----------------------------------------------------
+	public function listarProyectos(){
+
+		$respuesta = GestorProyectoModel::mostrarProyectosModel("projects");
+
+		foreach ($respuesta as $key => $item) {
+			echo '<tr>
+					<td>'.$item["name"].'</td>
+					<td>'.$item["description"].'</td>
+					<td><a href="index.php?action=proyectos&idMod=5">
+							<img src="'.$item["imagen"].'" class="rounded text-center" height="auto" width="120"/>
+						</a>
+					</td>
+					<td>'.$item["nameCategory"].'</td>
+					<td>
+						<a class="btn btn-primary mr-2 mb-2" href="index.php?action=proyectos&idVer=5">
+								<i class="fas fa-eye"></i>
+	                  	</a>
+
+						<a class="btn btn-dark mr-2 mb-2" href="index.php?action=proyectos&idAdd=5">
+								<i class="fas fa-plus"></i>
+	                  	</a>
+						<br>
+						<a class="btn btn-warning mr-2" href="index.php?action=proyectos&idEdit=5">
+								<i class="fas fa-edit"></i>
+	                  	</a>
+
+	                  	<a class="btn btn-danger" href="index.php?action=proyectos&idDel=5">
+	                  		<i class="fas fa-trash-alt"></i>
+	                  	</a>
+					</td>
+				<tr>';
+		}
+
+		
+	}
+
+
+	#VER LA IMAGEN EN FORMA DE MODAL
+	#---------------------------------------------
+	public function verImagen(){
+
+		if(isset($_GET["idMod"])){
+			echo 'Modal Imagen';
+		}
+
+	}
+
+
+	#VER IMAGENES DEL PROYECTO
+	#-----------------------------------------------
+	public function verImagenes(){
+		if (isset($_GET["idVer"])) {
+			echo 'Modal para ver la lista de fotos';
+		}
+	}
+
+
+	#AÑADIR IMAGENES AL PROYECTO
+	#----------------------------------------------
+	public function addImagen(){
+		if (isset($_GET["idAdd"])) {
+			echo 'Añadir Imagen';
+
+		}
+	}
+
+
+	#EDITAR DATOS DEL PROYECTO
+	#---------------------------------------------------
+	public function editarProyecto(){
+		if (isset($_GET["idEdit"])) {
+			echo 'Editar registro';
+		}
+	}
+
+	#PREGUNTAR SI DESEA ELIMINAR PROYECTO
+	#--------------------------------------------------
+	public function eliminarProyecto(){
+		if(isset($_GET["idDel"])){
+			echo 'Eliminar Registro';
+		}
+	}
+
 }
