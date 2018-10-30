@@ -87,7 +87,7 @@ class GestorProyecto{
 			echo '<tr>
 					<td>'.$item["name"].'</td>
 					<td>'.$item["description"].'</td>
-					<td><a href="index.php?action=proyectos&idMod=5">
+					<td><a href="index.php?action=proyectos&idMod='.$item["idProyect"].'">
 							<img src="'.$item["imagen"].'" class="rounded text-center" height="auto" width="120"/>
 						</a>
 					</td>
@@ -121,7 +121,39 @@ class GestorProyecto{
 	public function verImagen(){
 
 		if(isset($_GET["idMod"])){
-			echo 'Modal Imagen';
+			// echo 'Modal Imagen';
+			$idMod = $_GET["idMod"];
+
+			$buscar = GestorProyectoModel::buscarProyectoModel($idMod, "projects");
+
+			// var_dump($buscar);
+
+			// PARA LLAMAR EL MODAL AL DARLE CLICK
+			
+			echo '<script>
+				   $(document).ready(function()
+				   {
+				      $("#viewImg").modal("show");
+				   });
+				</script>';
+
+			echo '<div class="modal fade" id="viewImg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				  <div class="modal-dialog modal-lg" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title" id="exampleModalLabel">'.$buscar["name"].'</h5>
+				        <a type="button" class="close btn btn-outline-danger" href="proyectos">
+				        
+				          <span aria-hidden="true">&times;</span>
+				        </a>
+				      </div>
+				      <div class="modal-body">
+				       	<img width="100%" height="auto" src="'.$buscar["image"].'" />
+				      </div>
+				      
+				    </div>
+				  </div>
+				</div>';
 		}
 
 	}
