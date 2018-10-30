@@ -104,4 +104,40 @@ class GestorProyectoModel{
 		$stmt -> close();
 
 	}
+
+	#LISTAR TODOS LAS IMAGENES DEL PROYECTO PROYECTO ESPECIFICO
+	#---------------------------------------------------------------
+	public function buscarImagenesModel($id, $tabla){
+		$stmt = Conexion::conectar()->prepare("SELECT idImage, idProject, ruta FROM $tabla WHERE idProject = :id");
+
+		$stmt -> bindParam(":id", $id, PDO::PARAM_STR);
+
+		$stmt -> execute();
+
+		return $stmt -> fetchAll();
+
+		$stmt -> close();
+	}
+
+
+	#GUARDAR LAS IMAGENES ADICIONALES DEL PROYECTO
+	#--------------------------------------------------------
+	public function addImagenModel($datosModel, $tabla){
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (idProject, ruta) VALUES (:idProject, :ruta)");
+
+		$stmt -> bindParam(":idProject", $datosModel["id"], PDO::PARAM_INT);
+		$stmt -> bindParam(":ruta", $datosModel["ruta"], PDO::PARAM_STR);
+
+		if($stmt->execute()){
+
+			return "ok";
+		}
+
+		else{
+
+			return "error";
+		}
+
+		$stmt->close();
+	}
 }

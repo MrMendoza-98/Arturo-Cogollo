@@ -93,19 +93,19 @@ class GestorProyecto{
 					</td>
 					<td>'.$item["nameCategory"].'</td>
 					<td>
-						<a class="btn btn-primary mr-2 mb-2" href="index.php?action=proyectos&idVer=5">
+						<a class="btn btn-primary mr-2 mb-2" href="index.php?action=proyectos&idVer='.$item["idProyect"].'">
 								<i class="fas fa-eye"></i>
 	                  	</a>
 
-						<a class="btn btn-dark mr-2 mb-2" href="index.php?action=proyectos&idAdd=5">
+						<a class="btn btn-dark mr-2 mb-2" href="index.php?action=proyectos&idAdd='.$item["idProyect"].'">
 								<i class="fas fa-plus"></i>
 	                  	</a>
 						<br>
-						<a class="btn btn-warning mr-2" href="index.php?action=proyectos&idEdit=5">
+						<a class="btn btn-warning mr-2" href="index.php?action=proyectos&idEdit='.$item["idProyect"].'">
 								<i class="fas fa-edit"></i>
 	                  	</a>
 
-	                  	<a class="btn btn-danger" href="index.php?action=proyectos&idDel=5">
+	                  	<a class="btn btn-danger" href="index.php?action=proyectos&idDel='.$item["idProyect"].'">
 	                  		<i class="fas fa-trash-alt"></i>
 	                  	</a>
 					</td>
@@ -163,7 +163,38 @@ class GestorProyecto{
 	#-----------------------------------------------
 	public function verImagenes(){
 		if (isset($_GET["idVer"])) {
-			echo 'Modal para ver la lista de fotos';
+			$idVer = $_GET["idVer"];
+
+			$buscar = GestorProyectoModel::buscarImagenesModel($idVer, "images");
+
+			// var_dump($buscar);
+
+			// PARA LLAMAR EL MODAL AL DARLE CLICK
+			
+			echo '<script>
+				   $(document).ready(function()
+				   {
+				      $("#viewImgs").modal("show");
+				   });
+				</script>';
+
+			echo '<div class="modal fade" id="viewImgs" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				  <div class="modal-dialog modal-lg" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title" id="exampleModalLabel">Imagenes</h5>
+				        <a type="button" class="close btn btn-outline-danger" href="proyectos">
+				        
+				          <span aria-hidden="true">&times;</span>
+				        </a>
+				      </div>
+				      <div class="modal-body">
+				       	<img width="100%" height="auto" src="'.$buscar["ruta"].'" />
+				      </div>
+				      
+				    </div>
+				  </div>
+				</div>';
 		}
 	}
 
@@ -172,8 +203,107 @@ class GestorProyecto{
 	#----------------------------------------------
 	public function addImagen(){
 		if (isset($_GET["idAdd"])) {
-			echo 'Añadir Imagen';
+			$idAdd = $_GET["idAdd"];
 
+			// $buscar = GestorProyectoModel::buscarImagenesModel($idAdd, "images");
+
+			// var_dump($buscar);
+
+			// PARA LLAMAR EL MODAL AL DARLE CLICK
+			
+			echo '<script>
+				   $(document).ready(function()
+				   {
+				      $("#addImg").modal("show");
+				   });
+				</script>';
+
+			echo '<div class="modal fade" id="addImg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title" id="exampleModalLabel">Agregar Imagenes</h5>
+				        <a type="button" class="close btn btn-outline-danger" href="proyectos">
+				        
+				          <span aria-hidden="true">&times;</span>
+				        </a>
+				      </div>
+				      <div class="modal-body">
+				       	<form action="" method="post" enctype="multipart/form-data">
+							 <!-- INPUT IMAGEN -->
+                              <div class="form-group">
+                              	<div id="preview"></div>
+                                <label for="imagen">Imagen</label>
+                                <input type="file" class="form-control-file" name="imagenAdd" id="imagenEdit" required>
+                                <br>
+                                
+                              </div>
+                            <!-- LOS BOTONES DE ACCION -->
+	                          <div class="form-group form-actions">
+	                            <button class="btn btn-primary" type="submit">Agregar Imagen</button>
+	                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+	                          </div>
+				       	</form>
+				      </div>
+				      
+				    </div>
+				  </div>
+				</div>';
+
+
+			// RECOGER LOS DATOS DEL INPUT
+
+
+		    if(isset($_FILES["imagenAdd"])){
+
+				$imagenType = $_FILES['imagenAdd']['type'];
+
+				if($imagenType == 'image/jpeg' || $imagenType == 'image/png'){
+
+					setlocale(LC_ALL,"es_CO");
+					$imagenName = date("d").date("m").date("Y").date("s");
+
+					$route = "views/images/proyects/".$imagenName;
+
+					$route = $route.basename($_FILES['imagenAdd']['name']);
+					
+					move_uploaded_file($_FILES['imagenAdd']['tmp_name'], $route);
+
+					$datosController = array("id"=> $idAdd, "ruta" => $route);
+
+					$respuesta = GestorProyectoModel::addImagenModel($datosController, "images");
+
+					if($respuesta == "ok"){
+
+						echo'<script>
+
+							swal({
+								  title: "¡OK!",
+								  text: "¡La imagen ha sido agregada correctamente!",
+								  type: "success",
+								  confirmButtonText: "Creado"	  
+							}).then(function(){
+							    window.location = "proyectos";
+							});
+							
+						</script>';
+
+					}
+
+					else{
+
+						echo $respuesta;
+
+					}
+					#FIN DE LA RESPUESTA
+
+				}else{
+
+					echo 	'<div class="alert alert-danger text-center" role="alert">
+							 	<h4>Solo se permiten IMAGENES tipo JPG o PNG.</h4>
+							</div>';
+				}
+			}
 		}
 	}
 
