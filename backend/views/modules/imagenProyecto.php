@@ -44,8 +44,10 @@ if(!$_SESSION["validar"]){
                         <form class="dropzone" id="myDrop" name="file" action="controllers/upload.php">
                           <!-- <input type="file" name="file" id=""> -->
                         </form>
+                      
+                        <a href="proyectos" class="btn btn-primary mt-4 text-center">Ver Proyectos</a>
                     </div>
-
+                    
                   <!-- FIN DE LA CARD -->
                 </div>
               </div>
