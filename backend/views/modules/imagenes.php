@@ -55,6 +55,7 @@ if(!$_SESSION["validar"]){
                             $verImagenes -> verImagenGrande();
                             $verImagenes -> preguntarEstado();
                             $verImagenes -> desicionEstado();
+                            $verImagenes -> deleteImg();
 
                           ?>
                         </div>

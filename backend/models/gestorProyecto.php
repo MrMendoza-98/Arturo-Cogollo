@@ -177,4 +177,31 @@ class GestorProyectoModel{
 
 		$stmt->close();
 	}
+
+
+	#BORRAR IMAGEN
+	#-----------------------------------------------------
+	public function borrarImagenModel($id, $tabla){
+
+		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE idImage = :id");
+
+		$stmt->bindParam(":id", $id, PDO::PARAM_STR);
+
+		if($stmt->execute()){
+
+			return "ok";
+
+		}
+
+		else{
+
+			return "error";
+
+		}
+
+		$stmt->close();
+
+	}
+
+
 }

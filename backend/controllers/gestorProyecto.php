@@ -251,7 +251,7 @@ class GestorProyecto{
 	                        <div class="img-contenedor">
 	                            <img style="width:300px; height:200px;" class="img-fluid img mb-1" src="'.$rutaImg.'" alt="">
 	                        </div>
-	                        <a class="name-project btn btn-primary" href="index.php?action=imagenes&idVer='.$item["idProject"].'&idDel=5">Eliminar
+	                        <a class="name-project btn btn-primary" href="index.php?action=imagenes&idVer='.$item["idProject"].'&idDele='.$item["idImage"].'">Eliminar
 	                        </a>
 	                        <a class="name-project btn  
 	                        	'.$boton.'
@@ -397,7 +397,7 @@ class GestorProyecto{
 
 			echo '<script>
 				swal({
-				  title: "Esta seguro de Desabilitar esta imagen?",
+				  title: "Esta seguro de Deshabilitar esta imagen?",
 				  type: "warning",
 				  showCancelButton: true,
 				  confirmButtonColor: "#3085d6",
@@ -464,9 +464,9 @@ class GestorProyecto{
 
 			echo '<script>
 				swal({
-						  title: "La imagen fue desabilitada",
+						  title: "La imagen fue deshabilitada",
 						  type: "success",
-						  confirmButtonText: "Desabilitar"
+						  confirmButtonText: "Deshabilitar"
 						}).then(function(){
 						    window.location = "index.php?action=imagenes&idVer='.$buscar["idProject"].'";
 						});
@@ -491,7 +491,6 @@ class GestorProyecto{
 			echo '<script>
 				swal({
 						  title: "La Imagen ha sido Habilitada",
-						  text: "Fue Borrado!",
 						  type: "success",
 						  confirmButtonText: "Habilitar"
 						}).then(function(){
@@ -502,6 +501,57 @@ class GestorProyecto{
 
 		}
 
+	}
+
+
+	#ELIMINAR IMAGEN
+	#-------------------------------------------------
+	public function deleteImg(){
+		if(isset($_GET["idDele"])){
+			$idDele = $_GET["idDele"];
+
+			$buscar = GestorProyectoModel::buscarImagenModel($idDele, "images");
+			// var_dump($buscar);
+
+			echo '<script>
+				swal({
+				  title: "Esta seguro de Eliminar esta imagen?",
+				  type: "warning",
+				  showCancelButton: true,
+				  confirmButtonColor: "#3085d6",
+				  cancelButtonColor: "#d33",
+				  confirmButtonText: "Si, Estoy Seguro!"
+				}).then((result) => {
+				  if (result.value) {
+				    window.location.href="?action=imagenes&idVer='.$buscar["idProject"].'&idDele1='.$buscar["idImage"].'"
+				  }else{
+				  	 window.location = "index.php?action=imagenes&idVer='.$buscar["idProject"].'";
+				  }
+				})
+				</script>';
+
+		}
+
+
+		if(isset($_GET["idDele1"])){
+			$idDele1 = $_GET["idDele1"];
+
+			$buscar = GestorProyectoModel::buscarImagenModel($idDele1, "images");
+
+			$estado = GestorProyectoModel::borrarImagenModel($idDele1, "images");
+			// var_dump($buscar);
+
+			echo '<script>
+				swal({
+						  title: "La Imagen ha sido Borrada",
+						  text: "Fue Borrado!",
+						  type: "success",
+						  confirmButtonText: "Eliminado"
+						}).then(function(){
+						    window.location = "index.php?action=imagenes&idVer='.$buscar["idProject"].'";
+						});
+				</script>';
+		}
 	}
 
 
