@@ -93,7 +93,7 @@ class GestorProyectoModel{
 	#BUSCAR UN PROYECTO ESPECIFICA
 	#-----------------------------------------------
 	public function buscarProyectoModel($id, $tabla){
-		$stmt = Conexion::conectar()->prepare("SELECT idProject, name, description, image FROM $tabla WHERE idProject = :id");
+		$stmt = Conexion::conectar()->prepare("SELECT idProject, name, description, image, idCategory FROM $tabla WHERE idProject = :id");
 
 		$stmt -> bindParam(":id", $id, PDO::PARAM_STR);
 
@@ -203,5 +203,31 @@ class GestorProyectoModel{
 
 	}
 
+	#ACTUALIZAR CATEGORIAS
+	#---------------------------------------------------
+	public function editarProyectoModel($datosModel, $tabla){
+
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET name = :name, description = :description, image = :image, idCategory = :idCategory, idUser = :idUser WHERE idProject = :idProject");	
+
+		$stmt -> bindParam(":name", $datosModel["name"], PDO::PARAM_STR);
+		$stmt -> bindParam(":description", $datosModel["description"], PDO::PARAM_STR);
+		$stmt -> bindParam(":image", $datosModel["image"], PDO::PARAM_STR);
+		$stmt -> bindParam(":idCategory", $datosModel["idCategory"], PDO::PARAM_STR);
+		$stmt -> bindParam(":idUser", $datosModel["idUser"], PDO::PARAM_STR);
+		$stmt -> bindParam(":idProject", $datosModel["idProject"], PDO::PARAM_INT);
+
+		if($stmt->execute()){
+
+			return "ok";
+		}
+
+		else{
+
+			return "error";
+		}
+
+		$stmt->close();
+
+	}
 
 }

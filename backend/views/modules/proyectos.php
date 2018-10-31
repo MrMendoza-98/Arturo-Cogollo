@@ -63,7 +63,7 @@ if(!$_SESSION["validar"]){
                                 $verProyects -> addImagen();
                                 $verProyects -> editarProyecto();
                                 $verProyects -> eliminarProyecto();
-                                // $verProyects -> EliminarCategoriaFinal();
+                                
                                 
                               ?>
                             </tbody>

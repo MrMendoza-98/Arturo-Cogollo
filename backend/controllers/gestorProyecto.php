@@ -76,22 +76,6 @@ class GestorProyecto{
 	}
 
 
-	#EDITAR DATOS DEL PROYECTO
-	#---------------------------------------------------
-	public function editarProyecto(){
-		if (isset($_GET["idEdit"])) {
-			echo 'Editar registro';
-		}
-	}
-
-	#PREGUNTAR SI DESEA ELIMINAR PROYECTO
-	#--------------------------------------------------
-	public function eliminarProyecto(){
-		if(isset($_GET["idDel"])){
-			echo 'Eliminar Registro';
-		}
-	}
-
 	#LISTAR LOS PROYECTOS
 	#----------------------------------------------------
 	public function listarProyectos(){
@@ -128,6 +112,211 @@ class GestorProyecto{
 		}
 
 		
+	}
+
+
+
+	#EDITAR DATOS DEL PROYECTO
+	#---------------------------------------------------
+	public function editarProyecto(){
+		if (isset($_GET["idEdit"])) {
+			$idEdit = $_GET["idEdit"];
+			$option = '';
+
+			$categories = GestorProyectoModel::mostrarCategoriasModel("categories");
+
+			foreach ($categories as $key => $item) {
+				$option .= '<option value="'.$item["idCategory"].'">'.$item["name"].'</option>';
+			}
+
+
+			$buscar = GestorProyectoModel::buscarProyectoModel($idEdit, "projects");
+
+			foreach ($categories as $key => $item2) {
+				if($buscar["idCategory"] == $item2["idCategory"]){
+					$categoriaName = $item2["name"];
+				}
+			}
+
+			// var_dump($buscar);
+
+			// PARA LLAMAR EL MODAL AL DARLE CLICK
+			
+			echo '<script>
+				   $(document).ready(function()
+				   {
+				      $("#editProyect").modal("show");
+				   });
+				</script>';
+
+			echo '<div class="modal fade" id="editProyect" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		          <div class="modal-dialog" role="document">
+		            <div class="modal-content">
+		              <div class="modal-header">
+		                <h5 class="modal-title" id="exampleModalLabel">Editar Proyecto</h5>
+		                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		                  <span aria-hidden="true">&times;</span>
+		                </button>
+		              </div>
+		              <div class="modal-body">
+		    
+		                <div class="row">
+		                  <!-- INICIO DEL FORMULARIO -->
+		                      <div class="col-lg-12">
+		                        <div class="">
+		                          <div class="card-body">
+		                            <!-- INICIO DEL FORMULARIO -->
+		                            <form action="" method="post" enctype="multipart/form-data">
+		                              <!-- GRUPO DE INPUTS -->
+		                              <!-- INPUT NOMBRE -->
+		                              <div class="form-group">
+		                              
+		                                <label for="name">Nombre Categoria</label>
+		                                <input class="form-control" id="nameEdit" type="text" name="nameEdit" required value="'.$buscar["name"].'">
+		                                
+		                              
+		                              </div>
+		                              <!-- INPUT DESCRIPCION -->
+		                              <div class="form-group">
+		                                <label for="description">Descripción</label>
+		                                <textarea class="form-control" name="descriptionEdit" id="descriptionEdit">'.$buscar["description"].'</textarea>
+		                              </div>
+
+		                              <!-- INPUT CATEGORIA -->
+								 	  <div class="form-group">
+									    <label for="categoriaEdit">Example select</label>
+									    <select class="form-control" id="categoriaEdit" name="categoryEdit">
+									      <option value="'.$buscar["idCategory"].'">'.$categoriaName.'</option>
+									      '.$option.'
+									    </select>
+									  </div>
+
+		                              <!-- INPUT IMAGEN -->
+		                              <div class="form-group">
+		                                <label for="imagen">Imagen Portada</label>
+		                                <input type="file" class="form-control-file" name="imagenEdit" id="imagenEdit" required>
+		                                <br>
+		                                <div id="preview"></div>
+		                              </div>
+
+		                              <!-- LOS BOTONES DE ACCION -->
+		                              <div class="form-group form-actions">
+		                                <button class="btn btn-primary" type="submit">Editar Proyecto</button>
+		                                <a href="proyectos" class="btn btn-danger">Cancelar</a>
+		                              </div>
+		                            </form>
+		                            <!-- FIN DEL FORMULAIO -->
+		                          </div>
+		                        </div>
+		                      </div>
+		                  <!-- FIN DEL FORMULARIO -->
+
+		                </div>
+
+		              </div>
+		            </div>
+		          </div>
+		        </div>';
+
+
+		     // RECOGER LOS DATOS DEL INPUT
+
+
+		    if(isset($_POST["nameEdit"])){
+
+				$nameEdit = $_POST["nameEdit"];
+		    	$descripEdit = $_POST["descriptionEdit"];
+		    	$idCategory = $_POST["categoryEdit"];
+				$imagenType = $_FILES['imagenEdit']['type'];
+
+				$rutaAntigua = $buscar["image"];
+
+				if($imagenType == 'image/jpeg' || $imagenType == 'image/png'){
+
+					setlocale(LC_ALL,"es_CO");
+					$imagenName = date("d").date("m").date("Y").date("s");
+
+					$route = "views/images/proyects/".$imagenName;
+
+					$route = $route.basename($_FILES['imagenEdit']['name']);
+					
+					move_uploaded_file($_FILES['imagenEdit']['tmp_name'], $route);
+
+					$datosController = array("idProject"=> $idEdit, "name" => $nameEdit, "description" => $descripEdit, "image" => $route, "idCategory" => $idCategory, "idUser" => $_SESSION["idUser"]);
+
+					$respuesta = GestorProyectoModel::editarProyectoModel($datosController, "projects");
+
+					if($respuesta == "ok"){
+						unlink($rutaAntigua);
+
+						echo'<script>
+
+							swal({
+								  title: "¡OK!",
+								  text: "¡El proyecto ha sido Actualizado correctamente!",
+								  type: "success",
+								  confirmButtonText: "Actualizado"	  
+							}).then(function(){
+							    window.location = "proyectos";
+							});
+							
+						</script>';
+
+					}
+
+					else{
+
+						echo $respuesta;
+
+					}
+					#FIN DE LA RESPUESTA
+
+				}else{
+
+					echo 	'<div class="alert alert-danger text-center" role="alert">
+							 	<h4>Solo se permiten IMAGENES tipo JPG o PNG.</h4>
+							</div>';
+				}
+
+			}
+
+		}
+
+	}
+
+
+
+
+	#PREGUNTAR SI DESEA ELIMINAR PROYECTO
+	#--------------------------------------------------
+	public function eliminarProyecto(){
+		if(isset($_GET["idDel"])){
+			$idDel = $_GET["idDel"];
+
+			$buscar = GestorProyectoModel::buscarProyectoModel($idDel, "projects");
+			// var_dump($buscar);
+
+			echo '<script>
+				swal({
+				  title: "Esta seguro de Borrar el Proyecto '.$buscar["name"].'",
+				  type: "warning",
+				  showCancelButton: true,
+				  confirmButtonColor: "#3085d6",
+				  cancelButtonColor: "#d33",
+				  confirmButtonText: "Si, Estoy Seguro!"
+				}).then((result) => {
+				  if (result.value) {
+				    window.location.href="?action=proyectos&idBor='.$buscar["idProject"].'"
+				  }else{
+				  	 window.location = "proyectos";
+				  }
+				})
+				</script>';
+		}
+
+		if(isset($_GET["idBor"])){
+			echo 'Borrado';
+		}
 	}
 
 
