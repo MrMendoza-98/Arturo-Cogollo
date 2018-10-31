@@ -36,13 +36,13 @@ if(!$_SESSION["validar"]){
                     <div class="card-header">
                       <i class="fa fa-align-justify"></i> Proyectos
                       <div class="card-header-actions">
-                          <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newCategory">Nueva Categoria</button> -->
+                          
                           <a href="nuevoProyecto" class="btn btn-primary">Nuevo Proyecto</a>
                         </div>
                     </div>
                     <!-- CUERPO DE LA CARD -->
                     <div class="card-body">
-                        <table id="myTable" class="table table-striped table-bordered dt-responsive table-hover nowrap">
+                        <table id="miTabla" class="table table-bordered dt-responsive table-hover nowrap">
                             <thead>
                                 <tr>
                                     <th>Nombre</th>
@@ -63,6 +63,8 @@ if(!$_SESSION["validar"]){
                                 $verProyects -> addImagen();
                                 $verProyects -> editarProyecto();
                                 $verProyects -> eliminarProyecto();
+                                $verProyects -> preguntarEstadoProyecto();
+                                $verProyects -> desicionEstadoProyecto();
                                 
                                 
                               ?>
@@ -76,66 +78,6 @@ if(!$_SESSION["validar"]){
             </div>
         </div>
         
-        <!-- Modal -->
-        <div class="modal fade" id="newCategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Nueva Categoria</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-    
-                <div class="row">
-                  <!-- INICIO DEL FORMULARIO -->
-                      <div class="col-lg-12">
-                        <div class="">
-                          <div class="card-body">
-                            <!-- INICIO DEL FORMULARIO -->
-                            <form action="" method="post" enctype="multipart/form-data">
-                              <!-- GRUPO DE INPUTS -->
-                              <!-- INPUT NOMBRE -->
-                              <div class="form-group">
-                              
-                                <label for="name">Nombre Categoria</label>
-                                <input class="form-control" id="name" type="text" name="name" required>
-                                
-                              
-                              </div>
-                              <!-- INPUT DESCRIPCION -->
-                              <div class="form-group">
-                                <label for="description">Descripción</label>
-                                <textarea class="form-control" name="description" id="description"></textarea>
-                              </div>
-
-                              <!-- INPUT IMAGEN -->
-                              <div class="form-group">
-                                <label for="imagen">Imagen</label>
-                                <input type="file" class="form-control-file" name="imagen" id="imagen" required>
-                                <br>
-                                <div id="preview"></div>
-                              </div>
-
-                              <!-- LOS BOTONES DE ACCION -->
-                              <div class="form-group form-actions">
-                                <button class="btn btn-primary" type="submit">Crear Categoria</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                              </div>
-                            </form>
-                            <!-- FIN DEL FORMULAIO -->
-                          </div>
-                        </div>
-                      </div>
-                  <!-- FIN DEL FORMULARIO -->
-
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </div>
 
       </main>
       

@@ -80,7 +80,7 @@ class GestorProyectoModel{
 	#LISTAR TODOS LOS PROYECTOS
 	#------------------------------------
 	public function mostrarProyectosModel($tabla){
-		$stmt = Conexion::conectar()->prepare("SELECT p.idProject as idProyect, p.name as name, p.description as description, p.image as imagen, p.idCategory as idCategory, p.idUser, c.name as nameCategory FROM $tabla as p, categories as c WHERE p.idCategory = c.idCategory");
+		$stmt = Conexion::conectar()->prepare("SELECT p.idProject as idProyect, p.name as name, p.description as description, p.image as imagen, p.idCategory as idCategory, p.idUser, c.name as nameCategory, p.estado as estado FROM $tabla as p, categories as c WHERE p.idCategory = c.idCategory");
 
 		$stmt -> execute();
 
@@ -93,7 +93,7 @@ class GestorProyectoModel{
 	#BUSCAR UN PROYECTO ESPECIFICA
 	#-----------------------------------------------
 	public function buscarProyectoModel($id, $tabla){
-		$stmt = Conexion::conectar()->prepare("SELECT idProject, name, description, image, idCategory FROM $tabla WHERE idProject = :id");
+		$stmt = Conexion::conectar()->prepare("SELECT idProject, name, description, image, idCategory, estado FROM $tabla WHERE idProject = :id");
 
 		$stmt -> bindParam(":id", $id, PDO::PARAM_STR);
 
@@ -178,6 +178,27 @@ class GestorProyectoModel{
 		$stmt->close();
 	}
 
+	#CAMBIAR EL ESTADO DEL PROYECTO
+	#-----------------------------------------------
+	public function estadoProyecto($datosModel, $tabla){
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET estado = :estado WHERE idProject = :idProject");	
+
+		$stmt -> bindParam(":estado", $datosModel["estado"], PDO::PARAM_STR);
+		$stmt -> bindParam(":idProject", $datosModel["idProject"], PDO::PARAM_INT);
+
+		if($stmt->execute()){
+
+			return "ok";
+		}
+
+		else{
+
+			return "error";
+		}
+
+		$stmt->close();
+	}
+	
 
 	#BORRAR IMAGEN
 	#-----------------------------------------------------

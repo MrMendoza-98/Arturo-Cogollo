@@ -83,11 +83,17 @@ class GestorProyecto{
 		$respuesta = GestorProyectoModel::mostrarProyectosModel("projects");
 
 		foreach ($respuesta as $key => $item) {
+			if($item["estado"] == 0){
+					$boton = 'btn-danger" href="index.php?action=proyectos&idDesP='.$item["idProyect"].'"><i class="fa fa-toggle-off"></i>';
+				}else{
+					$boton = 'btn-success" href="index.php?action=proyectos&idHabP='.$item["idProyect"].'"><i class="fas fa-toggle-on"></i>';
+				}
+
 			echo '<tr>
 					<td>'.$item["name"].'</td>
 					<td>'.$item["description"].'</td>
 					<td><a href="index.php?action=proyectos&idMod='.$item["idProyect"].'">
-							<img src="'.$item["imagen"].'" class="rounded text-center" height="auto" width="120"/>
+							<img src="'.$item["imagen"].'" class="rounded text-center" height="auto" width="160"/>
 						</a>
 					</td>
 					<td>'.$item["nameCategory"].'</td>
@@ -107,6 +113,10 @@ class GestorProyecto{
 	                  	<a class="btn btn-danger" href="index.php?action=proyectos&idDel='.$item["idProyect"].'">
 	                  		<i class="fas fa-trash-alt"></i>
 	                  	</a>
+						<br>
+						<a class="name-project mt-1 btn  
+	                        	'.$boton.'
+	                    </a>
 					</td>
 				<tr>';
 		}
@@ -671,7 +681,69 @@ class GestorProyecto{
 	}
 
 
-	#DESICIO DEL ESTADO DE LA IMAGEN
+	#PREGUNTAR SI CAMBIAR EL ESTADO DEL PROYECTO
+	#--------------------------------------------------
+	public function preguntarEstadoProyecto(){
+		if(isset($_GET["idDesP"])){
+
+			$idDesP = $_GET["idDesP"];
+
+			$buscar = GestorProyectoModel::buscarProyectoModel($idDesP, "projects");
+			// var_dump($buscar);
+
+			echo '<script>
+				swal({
+				  title: "Esta seguro de Deshabilitar este proyecto '.$buscar["name"].'?",
+				  type: "warning",
+				  showCancelButton: true,
+				  confirmButtonColor: "#3085d6",
+				  cancelButtonColor: "#d33",
+				  confirmButtonText: "Si, Estoy Seguro!"
+				}).then((result) => {
+				  if (result.value) {
+				    window.location.href="?action=proyectos&idDesP1='.$buscar["idProject"].'"
+				  }else{
+				  	 window.location = "proyectos";
+				  }
+				})
+				</script>';
+			
+
+		}
+	
+
+	
+		if(isset($_GET["idHabP"])){
+
+			$idHabP = $_GET["idHabP"];
+
+			$buscar = GestorProyectoModel::buscarProyectoModel($idHabP, "projects");
+			// var_dump($buscar);
+
+			echo '<script>
+				swal({
+				  title: "Esta seguro de Habilitar este proyecto '.$buscar["name"].'?",
+				  type: "warning",
+				  showCancelButton: true,
+				  confirmButtonColor: "#3085d6",
+				  cancelButtonColor: "#d33",
+				  confirmButtonText: "Si, Estoy Seguro!"
+				}).then((result) => {
+				  if (result.value) {
+				    window.location.href="?action=proyectos&idHabP1='.$buscar["idProject"].'";
+				  }else{
+				  	 window.location = "proyectos";
+				  }
+				})
+				</script>';
+			
+
+		}
+
+	}
+
+
+	#DECISION DEL ESTADO DE LA IMAGEN
 	#--------------------------------------------------
 	public function desicionEstado(){
 
@@ -719,6 +791,64 @@ class GestorProyecto{
 						  confirmButtonText: "Habilitar"
 						}).then(function(){
 						    window.location = "index.php?action=imagenes&idVer='.$buscar["idProject"].'";
+						});
+				</script>';
+			
+
+		}
+
+	}
+
+
+
+	#DECISION DEL ESTADO DEL PROYECTO
+	#--------------------------------------------------
+	public function desicionEstadoProyecto(){
+
+		if(isset($_GET["idDesP1"])){
+
+			$idDesP1 = $_GET["idDesP1"];
+
+			$datosController = array("idProject" => $idDesP1, "estado" => 1);
+
+			$buscar = GestorProyectoModel::buscarProyectoModel($idDesP1, "projects");
+
+			$estado = GestorProyectoModel::estadoProyecto($datosController, "projects");
+			// var_dump($buscar);
+
+			echo '<script>
+				swal({
+						  title: "El proyecto '.$buscar["name"].' fue deshabilitada",
+						  type: "success",
+						  confirmButtonText: "Deshabilitar"
+						}).then(function(){
+						    window.location = "proyectos";
+						});
+				</script>';
+			
+
+		}
+	
+
+	
+		if(isset($_GET["idHabP1"])){
+
+			$idHabP1 = $_GET["idHabP1"];
+
+			$datosController = array("idProject" => $idHabP1, "estado" => 0);
+
+			$buscar = GestorProyectoModel::buscarProyectoModel($idHabP1, "projects");
+
+			$estado = GestorProyectoModel::estadoProyecto($datosController, "projects");
+			// var_dump($buscar);
+
+			echo '<script>
+				swal({
+						  title: "El proyecto '.$buscar["name"].' ha sido Habilitada",
+						  type: "success",
+						  confirmButtonText: "Habilitar"
+						}).then(function(){
+						    window.location = "proyectos";
 						});
 				</script>';
 			
