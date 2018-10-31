@@ -52,6 +52,7 @@ if(!$_SESSION["validar"]){
                         <div class="row text-center text-lg-left">
                            <?php 
                             $verImagenes ->verImagenes();
+                            $verImagenes ->verImagenGrande();
 
                           ?>
                         </div>

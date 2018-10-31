@@ -76,6 +76,21 @@ class GestorProyecto{
 	}
 
 
+	#EDITAR DATOS DEL PROYECTO
+	#---------------------------------------------------
+	public function editarProyecto(){
+		if (isset($_GET["idEdit"])) {
+			echo 'Editar registro';
+		}
+	}
+
+	#PREGUNTAR SI DESEA ELIMINAR PROYECTO
+	#--------------------------------------------------
+	public function eliminarProyecto(){
+		if(isset($_GET["idDel"])){
+			echo 'Eliminar Registro';
+		}
+	}
 
 	#LISTAR LOS PROYECTOS
 	#----------------------------------------------------
@@ -159,6 +174,55 @@ class GestorProyecto{
 	}
 
 
+	#VER LA IMAGEN EN FORMA DE MODAL  DE LAS IMAGENES DE LA PAGINA IMAGEN
+	#-------------------------------------------------------------------------
+	public function verImagenGrande(){
+
+		if(isset($_GET["idImg"])){
+			// echo 'Modal Imagen';
+			$idImg = $_GET["idImg"];
+
+			$buscar = GestorProyectoModel::buscarImagenModel($idImg, "images");
+
+			if(substr($buscar["ruta"], 0, 3) == '../'){
+				$rutaImg = iconv_substr($buscar["ruta"], 3);
+			}else{
+				$rutaImg = $buscar["ruta"];
+			}
+
+			// var_dump($buscar);
+
+			// PARA LLAMAR EL MODAL AL DARLE CLICK
+			
+			echo '<script>
+				   $(document).ready(function()
+				   {
+				      $("#viewImg").modal("show");
+				   });
+				</script>';
+
+			echo '<div class="modal fade" id="viewImg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				  <div class="modal-dialog modal-lg" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        
+				        <a type="button" class="close btn btn-outline-danger" href="index.php?action=imagenes&idVer='.$buscar["idProject"].'">
+				        
+				          <span aria-hidden="true">&times;</span>
+				        </a>
+				      </div>
+				      <div class="modal-body">
+				       	<img width="100%" height="auto" src="'.$rutaImg.'" />
+				      </div>
+				      
+				    </div>
+				  </div>
+				</div>';
+		}
+
+	}
+
+
 	#VER IMAGENES DEL PROYECTO
 	#-----------------------------------------------
 	public function verImagenes(){
@@ -178,16 +242,16 @@ class GestorProyecto{
 				}
 
 				if($item["estado"]){
-					$boton = 'btn-danger" href="index.php?action=imagenes&idDel=5">Deshabilitar';
+					$boton = 'btn-danger" href="index.php?action=imagenes&idVer='.$item["idProject"].'&idDel=5">Deshabilitar';
 				}else{
-					$boton = 'btn-warning" href="index.php?action=imagenes&idDel=5">Habilitar';
+					$boton = 'btn-warning" href="index.php?action=imagenes&idVer='.$item["idProject"].'&idDel=5">Habilitar';
 				}
 				echo '<div class="col-lg-4 col-md-6 col-xs-12">
-	                    <a href="index.php?action=imagenes&id='.$item["idProject"].'" class="d-block mb-0">
+	                    <a href="index.php?action=imagenes&idVer='.$item["idProject"].'&idImg='.$item["idImage"].'" class="d-block mb-0">
 	                        <div class="img-contenedor">
 	                            <img style="width:300px; height:200px;" class="img-fluid img mb-1" src="'.$rutaImg.'" alt="">
 	                        </div>
-	                        <a class="name-project btn btn-primary" href="index.php?action=imagenes&idDel=5">Eliminar
+	                        <a class="name-project btn btn-primary" href="index.php?action=imagenes&idVer='.$item["idProject"].'&idDel=5">Eliminar
 	                        </a>
 	                        <a class="name-project btn  
 	                        	'.$boton.'
@@ -320,20 +384,6 @@ class GestorProyecto{
 		echo $buscar["name"];
 	}
 
-	#EDITAR DATOS DEL PROYECTO
-	#---------------------------------------------------
-	public function editarProyecto(){
-		if (isset($_GET["idEdit"])) {
-			echo 'Editar registro';
-		}
-	}
-
-	#PREGUNTAR SI DESEA ELIMINAR PROYECTO
-	#--------------------------------------------------
-	public function eliminarProyecto(){
-		if(isset($_GET["idDel"])){
-			echo 'Eliminar Registro';
-		}
-	}
+	
 
 }
