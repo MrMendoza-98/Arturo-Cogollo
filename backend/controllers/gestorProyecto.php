@@ -241,10 +241,10 @@ class GestorProyecto{
 					$rutaImg = $item["ruta"];
 				}
 
-				if($item["estado"]){
-					$boton = 'btn-danger" href="index.php?action=imagenes&idVer='.$item["idProject"].'&idDel=5">Deshabilitar';
+				if($item["estado"] == 0){
+					$boton = 'btn-danger" href="index.php?action=imagenes&idVer='.$item["idProject"].'&idDes='.$item["idImage"].'">Deshabilitar';
 				}else{
-					$boton = 'btn-warning" href="index.php?action=imagenes&idVer='.$item["idProject"].'&idDel=5">Habilitar';
+					$boton = 'btn-warning" href="index.php?action=imagenes&idVer='.$item["idProject"].'&idHab='.$item["idImage"].'">Habilitar';
 				}
 				echo '<div class="col-lg-4 col-md-6 col-xs-12">
 	                    <a href="index.php?action=imagenes&idVer='.$item["idProject"].'&idImg='.$item["idImage"].'" class="d-block mb-0">
@@ -384,6 +384,126 @@ class GestorProyecto{
 		echo $buscar["name"];
 	}
 
+
+	#PREGUNTAR SI CAMBIAR EL ESTADO DE LA IMAGEN
+	#--------------------------------------------------
+	public function preguntarEstado(){
+		if(isset($_GET["idDes"])){
+
+			$idDes = $_GET["idDes"];
+
+			$buscar = GestorProyectoModel::buscarImagenModel($idDes, "images");
+			// var_dump($buscar);
+
+			echo '<script>
+				swal({
+				  title: "Esta seguro de Desabilitar esta imagen?",
+				  type: "warning",
+				  showCancelButton: true,
+				  confirmButtonColor: "#3085d6",
+				  cancelButtonColor: "#d33",
+				  confirmButtonText: "Si, Estoy Seguro!"
+				}).then((result) => {
+				  if (result.value) {
+				    window.location.href="?action=imagenes&idVer='.$buscar["idProject"].'&idDes1='.$buscar["idImage"].'"
+				  }else{
+				  	 window.location = "index.php?action=imagenes&idVer='.$buscar["idProject"].'";
+				  }
+				})
+				</script>';
+			
+
+		}
 	
+
+	
+		if(isset($_GET["idHab"])){
+
+			$idHab = $_GET["idHab"];
+
+			$buscar = GestorProyectoModel::buscarImagenModel($idHab, "images");
+			// var_dump($buscar);
+
+			echo '<script>
+				swal({
+				  title: "Esta seguro de Habilitar esta imagen?",
+				  type: "warning",
+				  showCancelButton: true,
+				  confirmButtonColor: "#3085d6",
+				  cancelButtonColor: "#d33",
+				  confirmButtonText: "Si, Estoy Seguro!"
+				}).then((result) => {
+				  if (result.value) {
+				    window.location.href="?action=imagenes&idVer='.$buscar["idProject"].'&idHab1='.$buscar["idImage"].'"
+				  }else{
+				  	 window.location = "index.php?action=imagenes&idVer='.$buscar["idProject"].'";
+				  }
+				})
+				</script>';
+			
+
+		}
+
+	}
+
+
+	#DESICIO DEL ESTADO DE LA IMAGEN
+	#--------------------------------------------------
+	public function desicionEstado(){
+
+		if(isset($_GET["idDes1"])){
+
+			$idDes1 = $_GET["idDes1"];
+
+			$datosController = array("idImage" => $idDes1, "estado" => 1);
+
+			$buscar = GestorProyectoModel::buscarImagenModel($idDes1, "images");
+
+			$estado = GestorProyectoModel::estadoImagen($datosController, "images");
+			// var_dump($buscar);
+
+			echo '<script>
+				swal({
+						  title: "La imagen fue desabilitada",
+						  type: "success",
+						  confirmButtonText: "Desabilitar"
+						}).then(function(){
+						    window.location = "index.php?action=imagenes&idVer='.$buscar["idProject"].'";
+						});
+				</script>';
+			
+
+		}
+	
+
+	
+		if(isset($_GET["idHab1"])){
+
+			$idHab1 = $_GET["idHab1"];
+
+			$datosController = array("idImage" => $idHab1, "estado" => 0);
+
+			$buscar = GestorProyectoModel::buscarImagenModel($idHab1, "images");
+
+			$estado = GestorProyectoModel::estadoImagen($datosController, "images");
+			// var_dump($buscar);
+
+			echo '<script>
+				swal({
+						  title: "La Imagen ha sido Habilitada",
+						  text: "Fue Borrado!",
+						  type: "success",
+						  confirmButtonText: "Habilitar"
+						}).then(function(){
+						    window.location = "index.php?action=imagenes&idVer='.$buscar["idProject"].'";
+						});
+				</script>';
+			
+
+		}
+
+	}
+
+
 
 }

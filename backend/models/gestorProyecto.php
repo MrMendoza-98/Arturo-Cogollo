@@ -155,4 +155,26 @@ class GestorProyectoModel{
 
 		$stmt->close();
 	}
+
+
+	#CAMBIAR EL ESTADO DE LA IMAGEN
+	#-----------------------------------------------
+	public function estadoImagen($datosModel, $tabla){
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET estado = :estado WHERE idImage = :idImage");	
+
+		$stmt -> bindParam(":estado", $datosModel["estado"], PDO::PARAM_STR);
+		$stmt -> bindParam(":idImage", $datosModel["idImage"], PDO::PARAM_INT);
+
+		if($stmt->execute()){
+
+			return "ok";
+		}
+
+		else{
+
+			return "error";
+		}
+
+		$stmt->close();
+	}
 }

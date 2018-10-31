@@ -51,8 +51,10 @@ if(!$_SESSION["validar"]){
                       <div class="container-fluid">
                         <div class="row text-center text-lg-left">
                            <?php 
-                            $verImagenes ->verImagenes();
-                            $verImagenes ->verImagenGrande();
+                            $verImagenes -> verImagenes();
+                            $verImagenes -> verImagenGrande();
+                            $verImagenes -> preguntarEstado();
+                            $verImagenes -> desicionEstado();
 
                           ?>
                         </div>
