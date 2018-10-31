@@ -1,3 +1,15 @@
+<?php 
+      if(!isset($_GET["idProy"])){
+        header("location: categories");
+        exit();
+      }
+
+      $idProyecto = $_GET["idProy"];
+
+      $proyecto = new GestorProyecto();
+
+    ?>
+
       <div class="container-fluid" style="margin-top:05%;">
       <!-- <div class="col-md-8 col-md-offset-2"  > -->
       <style media="screen">
@@ -22,7 +34,7 @@
                 </div>
             </div>
               <!-- Indicators -->
-              <ol class="carousel-indicators" style="bottom: -37px;">
+              <!-- <ol class="carousel-indicators" style="bottom: -37px;">
                   <li data-target="#carousel-landscape" data-slide-to="0" class="active"></li>
                   <li data-target="#carousel-landscape" data-slide-to="1"></li>
                   <li data-target="#carousel-landscape" data-slide-to="2"></li>
@@ -33,9 +45,18 @@
                   <li data-target="#carousel-landscape" data-slide-to="7"></li>
                   <li data-target="#carousel-landscape" data-slide-to="8"></li>
 
-              </ol>
+              </ol> -->
+
               <!-- Wrapper for slides -->
               <div class="carousel-inner" role="listbox" >
+                  <!-- INICIO DE LAS IMAGENES -->
+
+                  <?php 
+                    
+
+                    $proyecto -> verGaleria($idProyecto);
+                  ?>
+
                   <!-- <div class="item active">
                     <a data-trigger="preview1" href="javascript:;" class="box-gallery">
                       <i class=" fa fa-expand "></i>
@@ -43,26 +64,26 @@
                     <img src="http://www.arturocogollo.com/img/villa_ararat_riano/villa_p_1.jpg" style="width: 100%;" class=" imagefield">
                   </div> -->
 
-                  <div class="item active">
-                    <a data-trigger="preview2" href="javascript:;" style=" cursor: zoom-in;">
+                  <!-- <div class="item active">
+                    <a data-trigger="preview2" href="javascript:;" style=" cursor: zoom-in;"> -->
                       <!-- <i class=" fa fa-expand "></i> -->
-                    <img src="http://www.arturocogollo.com/img/villa_ararat_riano/villa_p_2.jpg" style="width: 100%;"  class=" imagefield">
+                    <!-- <img src="http://www.arturocogollo.com/img/villa_ararat_riano/villa_p_2.jpg" style="width: 100%;"  class=" imagefield">
                     </a> 
-                  </div>
+                  </div> -->
 
-                  <div class="item">
+                  <!-- <div class="item">
                     <a data-trigger="preview3" href="javascript:;" class="box-gallery">
                       <i class=" fa fa-expand "></i>
                     </a>
                     <img src="http://www.arturocogollo.com/img/villa_ararat_riano/villa_p_3.jpg" style="width: 100%;"  class=" imagefield">
-                  </div>
+                  </div> -->
 
-                  <div class="item">
+                  <!-- <div class="item">
                     <a data-trigger="preview4" href="javascript:;" class="box-gallery">
                       <i class=" fa fa-expand "></i>
                     </a>
                     <img src="http://www.arturocogollo.com/img/villa_ararat_riano/villa_p_4.jpg" style="width: 100%;"  class=" imagefield">
-                  </div>
+                  </div> -->
 
                   <!-- <div class="item">
                     <a data-trigger="preview5" href="javascript:;" class="box-gallery">
@@ -71,7 +92,7 @@
                     <img src="http://www.arturocogollo.com/img/villa_ararat_riano/villa_p_6.jpg" style="width: 100%;"  class=" imagefield">
                   </div> -->
 
-                  <div class="item">
+                  <!-- <div class="item">
                     <a data-trigger="preview6" href="javascript:;" class="box-gallery">
                       <i class=" fa fa-expand "></i>
                     </a>
@@ -107,7 +128,10 @@
                       <img src="http://www.arturocogollo.com/img/villa_ararat_riano/villa_d_11.jpg" class=" imagefield" style="padding-right: 5px; width: 50%;" >
                       <img src="http://www.arturocogollo.com/img/villa_ararat_riano/villa_d_12.jpg" class=" imagefield" style="padding-left: 5px; width: 50%;" >
                     </div>
-                  </div>
+                  </div> -->
+
+
+                  <!-- FIN DE LAS IMG -->
 
                   <!-- <div class="item" >
                     <a data-trigger="preview11" href="javascript:;" class="box-gallery">
