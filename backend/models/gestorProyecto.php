@@ -230,4 +230,29 @@ class GestorProyectoModel{
 
 	}
 
+
+	#BORRAR PROYECTO
+	#-----------------------------------------------------
+	public function borrarProyectoModel($id, $tabla){
+
+		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE idProject = :id");
+
+		$stmt->bindParam(":id", $id, PDO::PARAM_STR);
+
+		if($stmt->execute()){
+
+			return "ok";
+
+		}
+
+		else{
+
+			return "error";
+
+		}
+
+		$stmt->close();
+
+	}
+
 }

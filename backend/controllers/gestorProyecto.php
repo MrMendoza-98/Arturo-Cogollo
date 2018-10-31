@@ -315,7 +315,42 @@ class GestorProyecto{
 		}
 
 		if(isset($_GET["idBor"])){
-			echo 'Borrado';
+			
+			$idBorrar = $_GET["idBor"];
+
+			$buscar =  GestorProyectoModel::buscarProyectoModel($idBorrar, "projects");
+
+			$imagenes = GestorProyectoModel::buscarImagenesModel($idBorrar, "images");
+
+			$eliminar = GestorProyectoModel::borrarProyectoModel($idBorrar, "projects");
+			// var_dump($eliminar);
+			unlink($buscar["image"]);
+
+			foreach ($imagenes as $key => $item) {
+				if(substr($item["ruta"], 0, 3) == '../'){
+					$rutaImg = iconv_substr($item["ruta"], 3);
+				}else{
+					$rutaImg = $item["ruta"];
+				}
+
+				// BORRAMOS LA IMAGEN
+				unlink($rutaImg);
+			}
+
+
+			// var_dump($respuesta);
+
+			echo 	'<script>
+						swal({
+						  title: "El proyecto '.$buscar["name"].'",
+						  text: "Fue Borrado!",
+						  type: "success",
+						  confirmButtonText: "Eliminado"
+						}).then(function(){
+						    window.location = "proyectos";
+						});
+					</script>';
+
 		}
 	}
 
@@ -435,7 +470,7 @@ class GestorProyecto{
 				}else{
 					$boton = 'btn-warning" href="index.php?action=imagenes&idVer='.$item["idProject"].'&idHab='.$item["idImage"].'">Habilitar';
 				}
-				echo '<div class="col-lg-4 col-md-6 col-xs-12">
+				echo '<div class="col-lg-4 col-md-6 col-xs-12 mb-3">
 	                    <a href="index.php?action=imagenes&idVer='.$item["idProject"].'&idImg='.$item["idImage"].'" class="d-block mb-0">
 	                        <div class="img-contenedor">
 	                            <img style="width:300px; height:200px;" class="img-fluid img mb-1" src="'.$rutaImg.'" alt="">
@@ -729,6 +764,13 @@ class GestorProyecto{
 
 			$estado = GestorProyectoModel::borrarImagenModel($idDele1, "images");
 			// var_dump($buscar);
+			if(substr($buscar["ruta"], 0, 3) == '../'){
+				$rutaImg = iconv_substr($buscar["ruta"], 3);
+			}else{
+				$rutaImg = $buscar["ruta"];
+			}
+
+			unlink($rutaImg);
 
 			echo '<script>
 				swal({
