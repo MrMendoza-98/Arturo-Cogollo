@@ -93,7 +93,7 @@ class GestorProyecto{
 					</td>
 					<td>'.$item["nameCategory"].'</td>
 					<td>
-						<a class="btn btn-primary mr-2 mb-2" href="index.php?action=proyectos&idVer='.$item["idProyect"].'">
+						<a class="btn btn-primary mr-2 mb-2" href="index.php?action=imagenes&idVer='.$item["idProyect"].'">
 								<i class="fas fa-eye"></i>
 	                  	</a>
 
@@ -165,36 +165,40 @@ class GestorProyecto{
 		if (isset($_GET["idVer"])) {
 			$idVer = $_GET["idVer"];
 
-			$buscar = GestorProyectoModel::buscarImagenesModel($idVer, "images");
+			$img = GestorProyectoModel::buscarImagenesModel($idVer, "images");
 
 			// var_dump($buscar);
 
-			// PARA LLAMAR EL MODAL AL DARLE CLICK
-			
-			echo '<script>
-				   $(document).ready(function()
-				   {
-				      $("#viewImgs").modal("show");
-				   });
-				</script>';
+			// IMPRIMIMOS LAS IMAGENES EN PANTALLA
+			foreach ($img as $key => $item) {
+				if(substr($item["ruta"], 0, 3) == '../'){
+					$rutaImg = iconv_substr($item["ruta"], 3);
+				}else{
+					$rutaImg = $item["ruta"];
+				}
 
-			echo '<div class="modal fade" id="viewImgs" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-				  <div class="modal-dialog modal-lg" role="document">
-				    <div class="modal-content">
-				      <div class="modal-header">
-				        <h5 class="modal-title" id="exampleModalLabel">Imagenes</h5>
-				        <a type="button" class="close btn btn-outline-danger" href="proyectos">
-				        
-				          <span aria-hidden="true">&times;</span>
-				        </a>
-				      </div>
-				      <div class="modal-body">
-				       	<img width="100%" height="auto" src="'.$buscar["ruta"].'" />
-				      </div>
-				      
-				    </div>
-				  </div>
-				</div>';
+				if($item["estado"]){
+					$boton = 'btn-danger" href="index.php?action=imagenes&idDel=5">Deshabilitar';
+				}else{
+					$boton = 'btn-warning" href="index.php?action=imagenes&idDel=5">Habilitar';
+				}
+				echo '<div class="col-lg-4 col-md-6 col-xs-12">
+	                    <a href="index.php?action=imagenes&id='.$item["idProject"].'" class="d-block mb-0">
+	                        <div class="img-contenedor">
+	                            <img style="width:300px; height:200px;" class="img-fluid img mb-1" src="'.$rutaImg.'" alt="">
+	                        </div>
+	                        <a class="name-project btn btn-primary" href="index.php?action=imagenes&idDel=5">Eliminar
+	                        </a>
+	                        <a class="name-project btn  
+	                        	'.$boton.'
+	                        </a>
+	                    </a>
+	                </div>';
+			}
+			
+			
+
+			
 		}
 	}
 
@@ -307,6 +311,14 @@ class GestorProyecto{
 		}
 	}
 
+
+	#VER EL TITULO DEL PROYECTO EN LA PAGINA DE IMAGENES
+	#---------------------------------------------------
+	public function verTituloProyect($id){
+		
+		$buscar = GestorProyectoModel::buscarProyectoModel($id, "projects");
+		echo $buscar["name"];
+	}
 
 	#EDITAR DATOS DEL PROYECTO
 	#---------------------------------------------------

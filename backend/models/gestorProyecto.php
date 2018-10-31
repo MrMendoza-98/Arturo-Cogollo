@@ -108,7 +108,7 @@ class GestorProyectoModel{
 	#LISTAR TODOS LAS IMAGENES DEL PROYECTO PROYECTO ESPECIFICO
 	#---------------------------------------------------------------
 	public function buscarImagenesModel($id, $tabla){
-		$stmt = Conexion::conectar()->prepare("SELECT idImage, idProject, ruta FROM $tabla WHERE idProject = :id");
+		$stmt = Conexion::conectar()->prepare("SELECT idImage, idProject, ruta, estado FROM $tabla WHERE idProject = :id");
 
 		$stmt -> bindParam(":id", $id, PDO::PARAM_STR);
 
