@@ -1,3 +1,17 @@
+<?php
+
+session_start();
+error_reporting(0);
+
+if(!$_SESSION["validar"]){
+
+  header("location:login");
+
+  exit();
+
+}
+
+?>
 	<!-- INCLUIR EL MENU SUPERIOR -->
 	<?php include 'views/modules/topMenu.php'; ?>
     <div class="app-body">
@@ -8,13 +22,14 @@
       <main class="main">
         <!-- Breadcrumb-->
         <ol class="breadcrumb">
-          <li class="breadcrumb-item">Usuarios</li>
-          <li class="breadcrumb-item">
+          <h4 class="breadcrumb-item">Usuarios</h4>
+          <!-- <li class="breadcrumb-item">
             <a href="#">Admin</a>
           </li>
-          <li class="breadcrumb-item active">Dashboard</li>
+          <li class="breadcrumb-item active">Dashboard</li> -->
+
           <!-- Breadcrumb Menu-->
-          <li class="breadcrumb-menu d-md-down-none">
+          <!-- <li class="breadcrumb-menu d-md-down-none">
             <div class="btn-group" role="group" aria-label="Button group">
               <a class="btn" href="#">
                 <i class="icon-speech"></i>
@@ -24,7 +39,7 @@
               <a class="btn" href="#">
                 <i class="icon-settings"></i>  Settings</a>
             </div>
-          </li>
+          </li> -->
         </ol> 
 
         
@@ -44,9 +59,30 @@
                       </div>
                       <!-- CUERPO DE LA CARD -->
                       <div class="card-body">
-                                        
-        
+                        <table id="myTable" class="table table-striped table-bordered dt-responsive table-hover nowrap">
+                            <thead>
+                                <tr>
+                                    <th>Nombres</th>
+                                    <th>Apellidos</th>
+                                    <th>Tel / cel</th>
+                                    <th>Email</th>
+                                    <th>Rol</th>
+                                    <th>Opciones</th>
+                                </tr>
+                            </thead>
 
+                            <tbody>
+                              <?php 
+
+                                $verUser = new GestorUsuario();
+                                $verUser -> listarUsuarios();
+                                $verUser -> editarUsuario();
+                                $verUser -> eliminarUsuario();
+                                $verUser -> EliminarUsuarioFinal();
+                              ?>
+                            </tbody>
+
+                        </table>
                       </div>
                     </div>
                     <!-- FIN DE LA CARD -->
@@ -56,7 +92,7 @@
                       <div class="modal-dialog" role="document">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Nuevo Usuario</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
@@ -76,7 +112,7 @@
                                               <div class="input-group-prepend">
                                                 <span class="input-group-text">Nombres</span>
                                               </div>
-                                              <input class="form-control" id="nameUser" type="text" name="nameUser">
+                                              <input class="form-control" id="nameUser" type="text" name="nameUser" required>
                                               <div class="input-group-append">
                                                 <span class="input-group-text">
                                                   <i class="fa fa-user"></i>
@@ -90,7 +126,7 @@
                                               <div class="input-group-prepend">
                                                 <span class="input-group-text">Apellidos</span>
                                               </div>
-                                              <input class="form-control" id="lastnameUser" type="text" name="lastnameUser">
+                                              <input class="form-control" id="lastnameUser" type="text" name="lastnameUser" required>
                                               <div class="input-group-append">
                                                 <span class="input-group-text">
                                                   <i class="fa fa-user"></i>
@@ -104,7 +140,7 @@
                                               <div class="input-group-prepend">
                                                 <span class="input-group-text">Celular / Telefono</span>
                                               </div>
-                                              <input class="form-control" id="phoneUser" type="number" name="phoneUser">
+                                              <input class="form-control" id="phoneUser" type="number" name="phoneUser" required>
                                               <div class="input-group-append">
                                                 <span class="input-group-text">
                                                   <i class="fa fa-phone"></i>
@@ -118,7 +154,7 @@
                                               <div class="input-group-prepend">
                                                 <span class="input-group-text">Email</span>
                                               </div>
-                                              <input class="form-control" id="emailUser" type="email" name="emailUser">
+                                              <input class="form-control" id="emailUser" type="email" name="emailUser" required>
                                               <div class="input-group-append">
                                                 <span class="input-group-text">
                                                   <i class="fa fa-envelope"></i>
@@ -132,7 +168,7 @@
                                               <div class="input-group-prepend">
                                                 <span class="input-group-text">Password</span>
                                               </div>
-                                              <input class="form-control" id="passwordUser" type="password" name="passwordUser">
+                                              <input class="form-control" id="passwordUser" type="password" name="passwordUser" required>
                                               <div class="input-group-append">
                                                 <span class="input-group-text">
                                                   <i class="fa fa-asterisk"></i>
@@ -146,9 +182,8 @@
                                               <label class="input-group-text" for="selectRol">Rol</label>
                                             </div>
                                             <select class="custom-select" id="rolUser" name="rolUser">
-                                              <option selected>Seleccione un Rol</option>
                                               <option value="1">Administrador</option>
-                                              <option value="2">Auxiliar</option>
+                                              <option value="2">Editor</option>
                                             </select>
                                           </div>
                                           <!-- LOS BOTONES DE ACCION -->

@@ -11,17 +11,19 @@
       </button>
       <ul class="nav navbar-nav d-md-down-none">
         <li class="nav-item px-3">
-          <a class="nav-link" href="#">Dashboard</a>
+          <a class="nav-link" href="inicio">Inicio</a>
         </li>
         <li class="nav-item px-3">
-          <a class="nav-link" href="#">Users</a>
+          <a class="nav-link" href="usuario">Usuarios</a>
         </li>
-        <li class="nav-item px-3">
-          <a class="nav-link" href="#">Settings</a>
-        </li>
+        <!-- <li class="nav-item px-3">
+          <a class="nav-link" href="">Settings</a>
+        </li> -->
       </ul>
+
       <ul class="nav navbar-nav ml-auto">
-        <li class="nav-item d-md-down-none">
+        <h5 class="mr-2 text-center">Hola <?php echo $_SESSION["usuario"]; ?></h5>
+        <!-- <li class="nav-item d-md-down-none">
           <a class="nav-link" href="#">
             <i class="icon-bell"></i>
             <span class="badge badge-pill badge-danger">5</span>
@@ -31,13 +33,15 @@
           <a class="nav-link" href="#">
             <i class="icon-list"></i>
           </a>
-        </li>
-        <li class="nav-item d-md-down-none">
+        </li> -->
+        <!-- ICONO DE GPS O LOCALIZACION -->
+        <!-- <li class="nav-item d-md-down-none">
           <a class="nav-link" href="#">
             <i class="icon-location-pin"></i>
           </a>
-        </li>
-        <li class="nav-item dropdown">
+        </li> -->
+        <!-- MENU DE LA FOTO -->
+        <!-- <li class="nav-item dropdown">
           <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
             <img class="img-avatar" src="views/images/avatars/6.jpg" alt="admin@bootstrapmaster.com">
           </a>
@@ -82,12 +86,13 @@
             <a class="dropdown-item" href="#">
               <i class="fa fa-lock"></i> Logout</a>
           </div>
-        </li>
+        </li> -->
       </ul>
-      <button class="navbar-toggler aside-menu-toggler d-md-down-none" type="button" data-toggle="aside-menu-lg-show">
+      <!-- <button class="navbar-toggler aside-menu-toggler d-md-down-none" type="button" data-toggle="aside-menu-lg-show">
         <span class="navbar-toggler-icon"></span>
-      </button>
-      <button class="navbar-toggler aside-menu-toggler d-lg-none" type="button" data-toggle="aside-menu-show">
+      </button> -->
+      <!-- <button class="navbar-toggler aside-menu-toggler d-lg-none" type="button" data-toggle="aside-menu-show">
         <span class="navbar-toggler-icon"></span>
-      </button>
+      </button> -->
+      <a href="salir" class="btn btn-sm btn-outline-primary mr-2" ><i class="fas fa-sign-out-alt">Salir</i></a>
     </header>
