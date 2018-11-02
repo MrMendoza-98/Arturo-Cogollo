@@ -63,13 +63,21 @@ class GestorSlide{
 	#----------------------------------------------------
 	public function listarSlides(){
 
-		echo'<tr>
-				<td>Name</td>
-				<td>
-					<img src="" />
-				</td>
-				<td>Eliminar</td>
-			</tr>';
+		$respuesta = GestorSlideModel::listarSlideModel("slice");
+		// var_dump($respuesta);
+		foreach ($respuesta as $key => $item) {
+			echo'<tr>
+					<td>'.$item["name"].'</td>
+					<td>
+						<img src="'.$item["image"].'" class="rounded text-center" height="auto" width="150" />
+					</td>
+					<td>
+						<a class="btn btn-danger" href="index.php?action=slice&idDel='.$item["idProject"].'">
+	                  		<i class="fas fa-trash-alt"></i>
+	                  	</a>
+					</td>
+				</tr>';
+		}
 	}
 
 }

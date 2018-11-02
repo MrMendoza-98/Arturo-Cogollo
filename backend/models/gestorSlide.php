@@ -34,4 +34,17 @@ class GestorSlideModel{
 
 		$stmt->close();
 	}
+
+
+	#LISTAR LOS PROYECTOS QUE ESTAN EN EL SLICE
+	#-------------------------------------------
+	public function listarSlideModel($tabla){
+		$stmt = Conexion::conectar()->prepare("SELECT s.idProject, p.name, p.image FROM $tabla as s, projects as p WHERE s.idProject = p.idProject");
+
+		$stmt -> execute();
+
+		return $stmt -> fetchAll();
+
+		$stmt -> close();
+	}
 }
