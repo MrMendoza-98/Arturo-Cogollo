@@ -22,6 +22,9 @@
 
     <!-- DROPZONE -->
     <link rel="stylesheet" type="text/css" href="views/css/dropzone.css">
+
+    <!-- SELECT2 -->
+    <link rel="stylesheet" type="text/css" href="views/css/select2.min.css">
     
     <link rel="stylesheet" type="text/css" href="views/css/app.css">
     
@@ -35,6 +38,7 @@
     <script src="views/js/sweetalert2.min.js"></script>
     <script src="views/js/jquery.dataTables.min.js"></script>
     <script src="views/js/dropzone.js"></script>
+    <script src="views/js/select2.min.js"></script>
 
     
 </head>
