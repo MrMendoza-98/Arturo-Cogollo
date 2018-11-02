@@ -92,7 +92,8 @@ class GestorProyecto{
 			echo '<tr>
 					<td>'.$item["name"].'</td>
 					<td>'.$item["description"].'</td>
-					<td><a href="index.php?action=proyectos&idMod='.$item["idProyect"].'">
+					<td>
+						<a href="index.php?action=proyectos&idMod='.$item["idProyect"].'">
 							<img src="'.$item["imagen"].'" class="rounded text-center" height="auto" width="160"/>
 						</a>
 					</td>

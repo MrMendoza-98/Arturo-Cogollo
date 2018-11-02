@@ -10,6 +10,9 @@ if(!$_SESSION["validar"]){
 
 }
 
+
+  $slide = new GestorSlide();
+
 ?>
 	<!-- INCLUIR EL MENU SUPERIOR -->
 	<?php include 'views/modules/topMenu.php'; ?>
@@ -21,24 +24,59 @@ if(!$_SESSION["validar"]){
       <main class="main">
         <!-- Breadcrumb-->
         <ol class="breadcrumb">
-          <li class="breadcrumb-item">Slide</li>
-          <li class="breadcrumb-item">
-            <a href="#">Admin</a>
-          </li>
-          <li class="breadcrumb-item active">Dashboard</li>
-          <!-- Breadcrumb Menu-->
-          <li class="breadcrumb-menu d-md-down-none">
-            <div class="btn-group" role="group" aria-label="Button group">
-              <a class="btn" href="#">
-                <i class="icon-speech"></i>
-              </a>
-              <a class="btn" href="./">
-                <i class="icon-graph"></i>  Dashboard</a>
-              <a class="btn" href="#">
-                <i class="icon-settings"></i>  Settings</a>
+          <h4 class="breadcrumb-item">Slide</h4> 
+        </ol>
+
+        <!-- CONTENIDO DE LA PAGINA -->
+        <div class="container-fluid">
+            <div class="animated fadeIn">
+              <div class="row">
+                <div class="col-lg-12">
+                  <!-- INICIO DE LA CARD -->
+                  <div class="card">
+                    <!-- CABECERA DE LA CARD -->
+                    <div class="card-header">
+                      <i class="fa fa-align-justify"></i> Slide
+                      <div class="card-header-actions">
+                          
+                        </div>
+                    </div>
+                    <!-- CUERPO DE LA CARD -->
+                    <div class="card-body">
+                      <form method="POST" class="text-center mb-2">
+                        <select class="js-example-basic-multiple" name="proyectsSlice[]" multiple="multiple">
+                          <?php 
+                            $slide -> listarProyectos();
+                          ?>
+                        </select>
+                        <input type="submit" name="enviar" class="btn btn-primary" value="Cargar">
+                      </form>
+                        
+                        <table id="myTable" class="table table-striped table-bordered dt-responsive table-hover nowrap">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Imagen</th>
+                                    <th>Quitar</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                              <?php  
+
+                                  $slide -> guardarSlice();
+                                  $slide -> listarSlides();
+                                  
+                              ?>
+                            </tbody>
+
+                        </table>
+                    </div>
+                  <!-- FIN DE LA CARD -->
+                </div>
+              </div>
             </div>
-          </li>
-        </ol> 
+        </div> 
       </main>
       
       <!-- INCLUYE EL DESPLEGABLE DEL MENU SUPERIOR DERECHO-->
